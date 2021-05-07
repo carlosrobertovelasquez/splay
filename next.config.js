@@ -1,13 +1,13 @@
-const withImages = require('next-images');
+const withImages = require("next-images");
 
-const withMDX = require('@next/mdx')({
+const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
 });
 
 module.exports = withMDX(
   withImages({
-    fileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
-    pageExtensions: ['js', 'jsx', 'mdx'],
+    fileExtensions: ["jpg", "jpeg", "png", "gif", "webp"],
+    pageExtensions: ["js", "jsx", "mdx"],
     webpack(config, options) {
       return config;
     },
@@ -15,18 +15,18 @@ module.exports = withMDX(
       return [
         {
           // matching all API routes
-          source: '/api/:path*',
+          source: "/api/:path*",
           headers: [
-            { key: 'Access-Control-Allow-Credentials', value: 'true' },
-            { key: 'Access-Control-Allow-Origin', value: '*' },
+            { key: "Access-Control-Allow-Credentials", value: "true" },
+            { key: "Access-Control-Allow-Origin", value: "*" },
             {
-              key: 'Access-Control-Allow-Methods',
-              value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+              key: "Access-Control-Allow-Methods",
+              value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
             },
             {
-              key: 'Access-Control-Allow-Headers',
+              key: "Access-Control-Allow-Headers",
               value:
-                'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+                "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
             },
           ],
         },
@@ -40,7 +40,7 @@ module.exports = withMDX(
       NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: "splay7-8f0b9.appspot.com",
       NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: "665609040430",
       NEXT_PUBLIC_FIREBASE_APP_ID: "1:665609040430:web:ea5fd0fb32da95d3b1e5bf",
-      NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: "G-CWW5V9EXGN"
+      NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: "G-CWW5V9EXGN",
     },
   })
 );

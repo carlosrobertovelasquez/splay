@@ -1,68 +1,81 @@
-@media (min-width: 1280px)
-{
-    .container {
-        max-width: 1200px;
-    }
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
 
-    .container2 {
-        max-width: 1100px;
-    }
+  .container2 {
+    max-width: 1100px;
+  }
 }
 @media (min-width: 1536px) {
-    .container2 {
-        max-width: 1100px;
-    }
-    .container {
-        max-width: 1200px;
-    }
+  .container2 {
+    max-width: 1100px;
+  }
+  .container {
+    max-width: 1200px;
+  }
 }
 
+
+
+
+
 .boxWidget {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px 20px;
-    background: #EEF2F3;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 20px;
+  background: #eef2f3;
 }
 .friendname {
-    color: #00A59B;
-    font-weight: bold;
+  color: #00a59b;
+  font-weight: bold;
 }
 .link1 {
-    font-size: 0.8rem;
-    color: #00A59B;
-    font-weight: bold;
+  font-size: 0.8rem;
+  color: #00a59b;
+  font-weight: bold;
 }
 
 .button1 {
-    width: 100%;
-    background:#58595B;
-    color: #fff;
-    padding: 5px 20px;
-    left: 20px;
-    border-radius: 5px;
-    background: rgb(119,119,119);
-    background: linear-gradient(0deg, rgba(119,119,119,1) 0%, rgba(156,156,156,1) 35%, rgba(199,199,199,1) 100%);
-    font-weight:bold;
+  width: 100%;
+  background: #58595b;
+  color: #fff;
+  padding: 5px 20px;
+  left: 20px;
+  border-radius: 5px;
+  background: rgb(119, 119, 119);
+  background: linear-gradient(
+    0deg,
+    rgba(119, 119, 119, 1) 0%,
+    rgba(156, 156, 156, 1) 35%,
+    rgba(199, 199, 199, 1) 100%
+  );
+  font-weight: bold;
 }
 .button2 {
-    text-align: center;
-    display: inline-block;
-    min-width: 180px;
-    background:#00A59B;
-    color: #fff;
-    padding: 5px 20px;
-    left: 20px;
-    border-radius: 5px;
-    font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  min-width: 180px;
+  background: #00a59b;
+  color: #fff;
+  padding: 5px 20px;
+  left: 20px;
+  border-radius: 5px;
+  font-weight: bold;
 }
-.button3 { 
-    min-width: 180px;
-    background:#58595B;
-    color: #fff;
-    padding: 5px 20px;
-    left: 20px;
-    border-radius: 5px;
-    background: rgb(119,119,119);
-    background: linear-gradient(0deg, rgba(119,119,119,1) 0%, rgba(156,156,156,1) 35%, rgba(199,199,199,1) 100%);
-    font-weight:bold;
+.button3 {
+  min-width: 180px;
+  background: #58595b;
+  color: #fff;
+  padding: 5px 20px;
+  left: 20px;
+  border-radius: 5px;
+  background: rgb(119, 119, 119);
+  background: linear-gradient(
+    0deg,
+    rgba(119, 119, 119, 1) 0%,
+    rgba(156, 156, 156, 1) 35%,
+    rgba(199, 199, 199, 1) 100%
+  );
+  font-weight: bold;
 }
