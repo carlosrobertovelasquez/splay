@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { getUserByUserId } from "../../../../lib/db"
-
-export default function index({ alt, idUser }) {
+import PhotoAvatar from "../../../../public/Quetzal.jpeg"
+export default function index({ alt, idUser, height, width }) {
   const [dataUser, setDataUser] = useState(undefined)
   useEffect(() => {
     async function datosUser() {
@@ -13,20 +13,20 @@ export default function index({ alt, idUser }) {
     }
   }, [idUser])
   if (dataUser === undefined) return null
+
   return (
     <React.Fragment>
-      <div>
-        <img
-          style={{
-            borderRadius: "50%",
-            height: "150px",
-            width: "150px",
-          }}
-          alt={alt}
-          src={src}
-          title={alt}
-        />
-      </div>
+      <img
+        style={{
+          borderRadius: "50%",
+          height: { height },
+          width: { width },
+          display: "inline-block",
+        }}
+        alt={alt}
+        src={dataUser.avatar === "ND" ? PhotoAvatar : dataUser.avatar}
+        title={alt}
+      />
     </React.Fragment>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Body from "../Publication/Body"
+import Body from "./Body"
 import { listenLatesPublications } from "../../../../../../lib/db"
 
 export default function index(props) {

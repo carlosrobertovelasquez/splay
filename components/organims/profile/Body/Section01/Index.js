@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import ModalUpload from "../../../Modal/ModalPublication"
-export default function Index(props) {
+export default function index(props) {
   const { userData } = props
 
   if (userData[0].length === 0 || userData[0] === undefined) return null

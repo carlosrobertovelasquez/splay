@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 
-import NavBar from "../Profile/Navbar"
-import Header from "../Profile/Header"
-import Body from "../Profile/Body"
+import NavBar from "./navbar"
+import Header from "./header"
+import Body from "./body"
 
 import { listenLatesUsers } from "../../../lib/db"
 export default function index(props) {

@@ -3,6 +3,7 @@ import { getUserByUserId } from "../../../../lib/db"
 import useTimeAgo from "../../../../hooks/useTimeAgo"
 export default function index({ idUser, alt, dateCreate }) {
   const timego = useTimeAgo(dateCreate)
+
   const [dataUser, setDataUser] = useState(undefined)
   useEffect(() => {
     async function datosUser() {
@@ -40,7 +41,9 @@ export default function index({ idUser, alt, dateCreate }) {
         >
           {dataUser.firstName}
         </p>
-        <p style={{ fontSize: "0.8rem", color: "#9d9d9d" }}>{timego}</p>
+        {timego && (
+          <p style={{ fontSize: "0.8rem", color: "#9d9d9d" }}>{timego}</p>
+        )}
       </div>
     </React.Fragment>
   )

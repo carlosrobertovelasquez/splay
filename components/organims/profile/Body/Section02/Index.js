@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
-export default function Index() {
+export default function index() {
   return (
     <div className="mt-5 boxWidget">
       <div className="grid grid-cols-3 gap-4">
@@ -24,5 +24,5 @@ export default function Index() {
         </div>
       </div>
     </div>
-  );
+  )
 }

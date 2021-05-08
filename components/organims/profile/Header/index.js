@@ -20,6 +20,14 @@ export default function index({ userId }) {
     setLoaddingForm(!loaddingForm)
   }
 
+  const photoAvatar = async (file) => {
+    console.log("aqui estamos")
+    const extension = file.name.split(".").pop()
+    const filename = `${uuidv4()}.${extension}`
+    console.log(filename)
+  }
+
+  // Photo portada
   const handleUpload = async (file) => {
     const extension = file.name.split(".").pop()
     const filename = `${uuidv4()}.${extension}`
@@ -96,13 +104,12 @@ export default function index({ userId }) {
             >
               <button
                 onClick={Toggle}
-                className="updateBackground"
                 style={{
                   position: "relative",
                   top: "230px",
                   background: "#58595B",
                   color: "#fff",
-                  padding: "5px 20px",
+                  padding: "5px 10px",
                   left: "20px",
                   borderRadius: "5px",
                 }}
@@ -180,8 +187,30 @@ export default function index({ userId }) {
           </div>
           <div className="grid grid-cols-4 gap-4 profileOptions">
             <div className="profilePhoto" style={{ textAlign: "center" }}>
+              <button
+                onClick={photoAvatar}
+                {...getRootProps()}
+                style={{
+                  position: "relative",
+                  top: "100px",
+                  background: "#58595B",
+                  color: "#fff",
+                  left: "0px",
+                  borderRadius: "5px",
+                }}
+              >
+                <img
+                  src="/icons/photo.png"
+                  style={{
+                    width: "35px",
+                    display: "inline-block",
+                  }}
+                />
+                <input {...getInputProps()} />
+              </button>
               <Avatar src={userId[0].avatar} alt="Avatar" />
             </div>
+
             <div className="profileAlias">
               <h1
                 style={{

@@ -41,7 +41,6 @@ export default function index({
                 height="100%"
                 volume={0.8}
                 controls
-                playing
               />
             </div>
           ) : (
