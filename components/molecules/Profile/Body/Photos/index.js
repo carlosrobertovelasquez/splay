@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { useAuth } from "../../../../../lib/auth"
 import { listenLatesPublications } from "../../../../../lib/db"
-import Photo from "./photo"
+import Photo from "./Photo"
 export default function index({ userData }) {
   const { user } = useAuth()
   const [dataPublication, setDataPublication] = useState(undefined)

@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import Comments from "../Comments"
-import Counts from "../Counts"
+import Counts from "../Comments/Counts"
 import ReactPlayer from "react-player"
 import Avatar from "../../../../../../atoms/Avatar/Small"
-import ToolsButtonPublication from "../../../../../../molecules/ToolsButtomPublication"
+import ToolsButtonPublication from "../../../../../ToolsButtomPublication"
 export default function index({
   comments,
   dateCreate,

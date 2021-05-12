@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { listenLatesComentarios } from "../../../../../../../lib/db"
-import Like from "./like"
+import { listenLatesComentarios } from "../../../../../../../../lib/db"
+import Like from "./Like"
 export default function index({ publicactionId }) {
   const [comentarios, setComentarios] = useState("")
 

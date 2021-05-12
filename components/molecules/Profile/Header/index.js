@@ -5,7 +5,7 @@ import Avatar from "../../../atoms/Avatar"
 import { v4 as uuidv4 } from "uuid"
 import firebase from "../../../../lib/firebase"
 import { updatePhotoProfile, deletePhotoProfile } from "../../../../lib/db"
-import Header02 from "./header02"
+import Header02 from "./Header02"
 const storage = firebase.storage()
 
 export default function index({ userId, profile }) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import ModalUpload from "../../../Modal/ModalPublication"
+import ModalUpload from "../../../../organims/Modal/ModalPublication"
 export default function index(props) {
   const { userData } = props
 

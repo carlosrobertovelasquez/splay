@@ -7,7 +7,6 @@ import { useAuth } from "../../../../lib/auth"
 import Link from "next/link"
 export default function index() {
   const { user } = useAuth()
-  console.log(user)
   return (
     <React.Fragment>
       <nav

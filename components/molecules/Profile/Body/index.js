@@ -1,14 +1,13 @@
 import React from "react"
-import Information from "./Information"
-import Friends from "./Friends"
-import Photo from "./photos"
-import Section01 from "./Section01"
-import Section02 from "./Section02"
-import Publications from "./Publications"
-export default function Index(props) {
+import Information from "../../../molecules/Profile/Body/Information"
+import Friends from "../../../molecules/Profile/Body/Friends"
+import Photo from "./Photos"
+import Section01 from "../../../molecules/Profile/Body/Section01"
+import Section02 from "../../../molecules/Profile/Body/Section02"
+import Publications from "../../../molecules/Profile/Body/Publications"
+export default function index(props) {
   const { profile } = props
   const { userData } = props
-
   return (
     <React.Fragment>
       <section>
