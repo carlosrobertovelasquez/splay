@@ -5,9 +5,10 @@ import Avatar from "../../../atoms/Avatar"
 import { v4 as uuidv4 } from "uuid"
 import firebase from "../../../../lib/firebase"
 import { updatePhotoProfile, deletePhotoProfile } from "../../../../lib/db"
+import Header02 from "./header02"
 const storage = firebase.storage()
 
-export default function index({ userId }) {
+export default function index({ userId, profile }) {
   // const { userId } = props
 
   const [loaddingForm, setLoaddingForm] = useState(true)
@@ -18,13 +19,6 @@ export default function index({ userId }) {
 
   const Toggle = () => {
     setLoaddingForm(!loaddingForm)
-  }
-
-  const photoAvatar = async (file) => {
-    console.log("aqui estamos")
-    const extension = file.name.split(".").pop()
-    const filename = `${uuidv4()}.${extension}`
-    console.log(filename)
   }
 
   // Photo portada
@@ -102,28 +96,31 @@ export default function index({ userId }) {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <button
-                onClick={Toggle}
-                style={{
-                  position: "relative",
-                  top: "230px",
-                  background: "#58595B",
-                  color: "#fff",
-                  padding: "5px 10px",
-                  left: "20px",
-                  borderRadius: "5px",
-                }}
-              >
-                Actualizar Portada
-                <img
-                  src="/icons/icon8.png"
+              {profile === "W" ? (
+                <button
+                  onClick={Toggle}
                   style={{
-                    width: "35px",
-                    display: "inline-block",
-                    paddingLeft: "13px",
+                    position: "relative",
+                    top: "230px",
+                    background: "#58595B",
+                    color: "#fff",
+                    padding: "5px 10px",
+                    left: "20px",
+                    borderRadius: "5px",
                   }}
-                />
-              </button>
+                >
+                  Actualizar Portada
+                  <img
+                    src="/icons/icon8.png"
+                    style={{
+                      width: "35px",
+                      display: "inline-block",
+                      paddingLeft: "13px",
+                    }}
+                  />
+                </button>
+              ) : null}
+
               {!loaddingForm && (
                 <div
                   style={{
@@ -185,84 +182,14 @@ export default function index({ userId }) {
               )}
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-4 profileOptions">
-            <div className="profilePhoto" style={{ textAlign: "center" }}>
-              <button
-                onClick={photoAvatar}
-                {...getRootProps()}
-                style={{
-                  position: "relative",
-                  top: "100px",
-                  background: "#58595B",
-                  color: "#fff",
-                  left: "0px",
-                  borderRadius: "5px",
-                }}
-              >
-                <img
-                  src="/icons/photo.png"
-                  style={{
-                    width: "35px",
-                    display: "inline-block",
-                  }}
-                />
-                <input {...getInputProps()} />
-              </button>
-              <Avatar src={userId[0].avatar} alt="Avatar" />
-            </div>
-
-            <div className="profileAlias">
-              <h1
-                style={{
-                  fontSize: "2.5rem",
-                  fontWeight: "bold",
-                  color: "#00A59B",
-                }}
-              >
-                {userId[0].firstName}
-              </h1>
-              <h2
-                style={{
-                  fontSize: "1.8rem",
-                  fontWeight: "400",
-                  color: "#58595B",
-                }}
-              >
-                {userId[0].occupation}
-              </h2>
-            </div>
-            <div className="profileActions">
-              <p className="my-4">
-                <Link href="/">
-                  <a className="button2">Añadir Historia</a>
-                </Link>
-              </p>
-              <p>
-                <button className="button3">Editar Perfil</button>
-              </p>
-            </div>
-            <div className="profileMore text-right">
-              <p>
-                <Link href="/">
-                  <a style={{ fontSize: "1.5rem", color: "#808080" }}>
-                    Publicaciones
-                  </a>
-                </Link>
-              </p>
-              <p>
-                <Link href="/">
-                  <a style={{ fontSize: "1.5rem", color: "#808080" }}>
-                    Información
-                  </a>
-                </Link>
-              </p>
-              <p>
-                <Link href="/">
-                  <a style={{ fontSize: "1.5rem", color: "#808080" }}>Amigos</a>
-                </Link>
-              </p>
-            </div>
-          </div>
+          <div className="grid grid-cols-4 gap-4 profileOptions"></div>
+          <Header02
+            userId={userId[0].id}
+            firstName={userId[0].firstName}
+            avatar={userId[0].avatar}
+            occupation={userId[0].occupation}
+            profile={profile}
+          />
         </div>
       </section>
       {pantallaModal && (

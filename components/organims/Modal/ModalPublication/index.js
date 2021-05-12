@@ -50,6 +50,7 @@ export default function index(props) {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         setUploadValue(percentage)
       },
+
       (error) => {
         console.log(error.message)
       },

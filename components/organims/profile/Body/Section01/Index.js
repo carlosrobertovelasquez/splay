@@ -35,7 +35,7 @@ export default function index(props) {
                     marginBottom: "2rem",
                     height: "45px",
                     background: "initial",
-                    fontSize: "2.2rem",
+                    fontSize: "1.5rem",
                   }}
                 >
                   <span

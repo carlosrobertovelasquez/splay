@@ -5,6 +5,7 @@ export default function index({ idUser, alt, dateCreate }) {
   const timego = useTimeAgo(dateCreate)
 
   const [dataUser, setDataUser] = useState(undefined)
+
   useEffect(() => {
     async function datosUser() {
       const [response] = await getUserByUserId(idUser)

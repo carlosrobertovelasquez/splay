@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react"
 import NavBar from "./navbar"
 import Header from "./header"
 import Body from "./body"
-
+import { useAuth } from "../../../lib/auth"
 import { listenLatesUsers } from "../../../lib/db"
 export default function index(props) {
+  const { profile } = props
   const { userId } = props
   const [dataComentarios, setDataComentarios] = useState(undefined)
   useEffect(() => {
@@ -25,11 +26,12 @@ export default function index(props) {
     .filter((e) => e.userid === userId)
 
   if (datos === undefined) return null
+
   return (
     <React.Fragment>
-      <NavBar userId={datos} />
-      <Header userId={datos} />
-      <Body userData={datos} />
+      <NavBar userId={datos} profile={profile} />
+      <Header userId={datos} profile={profile} />
+      <Body userData={datos} profile={profile} />
     </React.Fragment>
   )
 }

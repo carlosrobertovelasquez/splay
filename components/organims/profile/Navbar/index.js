@@ -3,8 +3,11 @@ import iconBird from "../../../../public/icons/bird.png"
 import iconHome from "../../../../public/icons/home.png"
 import icon1 from "../../../../public/icons/icon1.png"
 import Logo from "../../../../public/Logo02.png"
+import { useAuth } from "../../../../lib/auth"
 import Link from "next/link"
 export default function index() {
+  const { user } = useAuth()
+  console.log(user)
   return (
     <React.Fragment>
       <nav
@@ -43,20 +46,19 @@ export default function index() {
           <div className="text-sm lg:flex-grow"></div>
           <div>
             <Link href="/">
-              <a
-                href="/"
-                className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0"
-              >
+              <a className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0">
                 <img style={{ width: "40px" }} src={iconHome} />
               </a>
             </Link>
+            <Link href="/W/[id]" as={`/W/${user.uid}`}>
+              <a
+                href="#"
+                className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0"
+              >
+                <img style={{ width: "40px" }} src={icon1} />
+              </a>
+            </Link>
 
-            <a
-              href="#"
-              className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0"
-            >
-              <img style={{ width: "40px" }} src={icon1} />
-            </a>
             <a
               href="#"
               className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0"

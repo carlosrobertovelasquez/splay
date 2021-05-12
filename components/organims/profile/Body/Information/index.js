@@ -1,6 +1,7 @@
 import React from "react"
 
 export default function index(props) {
+  const { profile } = props
   const { userData } = props
 
   return (
@@ -47,9 +48,11 @@ export default function index(props) {
         </li>
       </ul>
 
-      <p style={{ marginTop: "50px" }}>
-        <button className="button1">Editar Perfil</button>
-      </p>
+      {profile === "W" ? (
+        <p style={{ marginTop: "50px" }}>
+          <button className="button1">Editar Perfil</button>
+        </p>
+      ) : null}
     </div>
   )
 }

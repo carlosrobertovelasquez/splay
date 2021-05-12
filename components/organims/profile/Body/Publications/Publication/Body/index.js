@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import Comments from "../Comments"
 import Counts from "../Counts"
 import ReactPlayer from "react-player"
-
 import Avatar from "../../../../../../atoms/Avatar/Small"
+import ToolsButtonPublication from "../../../../../../molecules/ToolsButtomPublication"
 export default function index({
   comments,
   dateCreate,
@@ -12,6 +12,14 @@ export default function index({
   typeFile,
   id,
 }) {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const playMovie = () => {
+    setIsPlaying(true)
+  }
+  const stopMovie = () => {
+    setIsPlaying(false)
+  }
+
   return (
     <React.Fragment>
       <div className="mt-5 boxWidget">
@@ -34,12 +42,17 @@ export default function index({
             </p>
           </div>
           {typeFile === "video" ? (
-            <div className="col-span-12 mt-4 mb-4">
+            <div
+              className="col-span-12 mt-4 mb-4"
+              onMouseOver={playMovie}
+              onMouseOut={stopMovie}
+            >
               <ReactPlayer
                 url={file}
                 width="100%"
                 height="100%"
                 volume={0.8}
+                playing={isPlaying}
                 controls
               />
             </div>
@@ -49,7 +62,7 @@ export default function index({
             </div>
           )}
 
-          <Counts />
+          <Counts publicactionId={id} />
 
           <div
             className="col-span-11 mb-5"
@@ -59,35 +72,7 @@ export default function index({
               paddingTop: "10px",
             }}
           >
-            <div className="grid grid-cols-3">
-              <div className="text-center">
-                <button>
-                  <img
-                    src="/icons/icon6.png"
-                    style={{ width: "20px", display: "inline-block" }}
-                  />{" "}
-                  Guardar
-                </button>
-              </div>
-              <div className="text-center">
-                <button>
-                  <img
-                    src="/icons/comment.png"
-                    style={{ width: "20px", display: "inline-block" }}
-                  />{" "}
-                  Comentar
-                </button>
-              </div>
-              <div className="text-center">
-                <button>
-                  <img
-                    src="/icons/like.png"
-                    style={{ width: "20px", display: "inline-block" }}
-                  />{" "}
-                  Me gusta
-                </button>
-              </div>
-            </div>
+            <ToolsButtonPublication publicationId={id} />
           </div>
 
           <Comments commentId={id} />
