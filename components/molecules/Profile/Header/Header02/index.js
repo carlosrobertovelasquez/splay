@@ -5,6 +5,7 @@ import { useDropzone } from "react-dropzone"
 import { v4 as uuidv4 } from "uuid"
 import { updatePhoto } from "../../../../../lib/db"
 import firebase from "../../../../../lib/firebase"
+import AvatarAve from "../../../../../public/Quetzal.jpeg"
 const storage = firebase.storage()
 export default function index({
   avatar,
@@ -92,7 +93,7 @@ export default function index({
             </button>
           ) : null}
 
-          <Avatar src={avatar} alt="Avatar" />
+          <Avatar src={avatar === "ND" ? AvatarAve : avatar} alt="Avatar" />
         </div>
 
         <div className="profileAlias">

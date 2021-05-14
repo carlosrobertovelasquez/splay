@@ -96,7 +96,7 @@ export default function index() {
                         type="email"
                         autoComplete="off"
                         className="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                        placeholder="Usuario o número de teléfono"
+                        placeholder="Correo eletronico"
                         onChange={({ target }) => setEmail(target.value)}
                       />
                     </div>

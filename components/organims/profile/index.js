@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 
-import NavBar from "../../molecules/Profile/Navbar"
+import NavBar from "../../molecules/Navbar"
 import Header from "../../molecules/Profile/Header"
 import Body from "../../molecules/Profile/Body"
 import { listenLatesUsers } from "../../../lib/db"

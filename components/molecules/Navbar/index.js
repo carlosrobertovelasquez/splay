@@ -44,12 +44,12 @@ export default function index() {
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow"></div>
           <div>
-            <a
-              href="#"
-              className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0"
-            >
-              <img style={{ width: "40px" }} src={iconHome} />
-            </a>
+            <Link href="/">
+              <a className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0">
+                <img style={{ width: "40px" }} src={iconHome} />
+              </a>
+            </Link>
+
             <Link href="/W/[id]" as={`/W/${user.uid}`}>
               <a className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0">
                 <img style={{ width: "40px" }} src={icon1} />

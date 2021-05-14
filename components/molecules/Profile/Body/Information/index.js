@@ -3,7 +3,8 @@ import React from "react"
 export default function index(props) {
   const { profile } = props
   const { userData } = props
-
+  const fecha = userData[0].dateCreate
+  const fechaIngreso = Intl.DateTimeFormat().format(new Date(fecha)) // 08/04/2021
   return (
     <div className="boxWidget">
       <h2
@@ -44,7 +45,7 @@ export default function index(props) {
               paddingRight: "13px",
             }}
           />
-          En Splay desde {userData[0].dateCreate}
+          En Splay desde {fechaIngreso}
         </li>
       </ul>
 
