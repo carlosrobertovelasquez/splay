@@ -2,9 +2,13 @@ import React from "react"
 import Header from "../../molecules/Navbar"
 import Link from "next/link"
 import { useAuth } from "../../../lib/auth"
-
+import Auth from "../../../pages/Auth"
 export default function index() {
-  const { signout } = useAuth()
+  const { user, signout } = useAuth()
+  if (!user) {
+    ;<Auth />
+  }
+
   const avatarOverCard = {
     position: "absolute",
     top: "-5px",

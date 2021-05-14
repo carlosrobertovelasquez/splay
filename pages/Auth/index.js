@@ -9,6 +9,7 @@ import { useRouter } from "next/router"
 
 export default function index() {
   const auth = useAuth()
+  const { user } = useAuth()
   const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -21,6 +22,9 @@ export default function index() {
     auth
       .signinWithEmail(email, password, "/")
       .then(() => {
+        if (user === false) {
+          setError("Su cuenta no esta Validad revise su buzon de correo")
+        }
         router.push("/")
       })
       .catch((error) => {
@@ -137,7 +141,7 @@ export default function index() {
                     </Link>
                   </div>
                   <div className="sm:w-auto md:w-1/2 text-center">
-                    <Link href="/createAccount">
+                    <Link href="/passwordReset">
                       <a
                         href="#"
                         className="button1 hover:text-indigo-primary text-white"

@@ -1,15 +1,14 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Head from "next/head"
-import Imagen from "next/image"
+
 import { useAuth } from "../lib/auth"
-import { doesUsernameExist } from "../lib/db"
+import { doesUsernameExist, createFriends } from "../lib/db"
 import Link from "next/link"
 import Quetzal from "../public/Quetzal.jpeg"
 import firebase from "../lib/firebase"
 import Router from "next/router"
 export default function createAccount() {
-  const auth = useAuth()
-
+  const { user, signout } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
@@ -30,16 +29,25 @@ export default function createAccount() {
     ano === "00" ||
     sexo === ""
 
+  useEffect(() => {
+    let unsubscribe
+    if (user) {
+      unsubscribe = useAuth()
+    }
+    return () => unsubscribe && unsubscribe()
+  }, [user])
+
   const handleLogin = async (event) => {
     event.preventDefault()
     const usernameExists = await doesUsernameExist(email)
-    console.log(usernameExists)
+    // console.log(usernameExists)
     if (!usernameExists.length) {
       try {
         const createdUserResult = await firebase
           .auth()
           .createUserWithEmailAndPassword(email, password)
-        await createdUserResult.user.updateProfile({
+        createdUserResult.user.sendEmailVerification()
+        createdUserResult.user.updateProfile({
           displayName: nombre,
         })
         await firebase.firestore().collection("users").add({
@@ -61,7 +69,12 @@ export default function createAccount() {
           estado: "T",
           dateCreate: Date.now(),
         })
-
+        // Pendiente de cambiar el id de Splay oficial
+        await createFriends(
+          "klYYiY1LIzVSd6NinFog5jiplXF3",
+          createdUserResult.user.uid
+        )
+        //   signout()
         Router.push("/")
       } catch (error) {
         setNombre("")
