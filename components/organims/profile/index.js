@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 
 import NavBar from "../../molecules/Navbar"
-import Header from "../../molecules/Profile/Header"
+import Header from "../../molecules/Header/Profile"
 import Body from "../../molecules/Profile/Body"
 import { listenLatesUsers } from "../../../lib/db"
 export default function index(props) {
@@ -25,7 +25,6 @@ export default function index(props) {
     .filter((e) => e.userid === userId)
 
   if (datos === undefined) return null
-
   return (
     <React.Fragment>
       <NavBar userId={datos} profile={profile} />

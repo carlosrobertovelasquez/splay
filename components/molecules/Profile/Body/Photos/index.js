@@ -18,10 +18,13 @@ export default function index({ userData }) {
   }, [user.uid])
 
   if (dataPublication === undefined) return null
+
   const datos = dataPublication
     .slice(-11)
     .sort((a, b) => a.dateCreate - b.dateCreate)
-    .filter((e) => (e.idUser === userData[0].userid) & (e.typeFile === "image"))
+    .filter(
+      (e) => (e.idUser === userData[0].userid) & (e.typeFile === "imagen")
+    )
   return (
     <div className="mt-4 boxWidget">
       <div className="grid grid-cols-2 gap-4">

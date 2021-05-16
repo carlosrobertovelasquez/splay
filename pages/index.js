@@ -5,6 +5,7 @@ import Auth from "../pages/Auth"
 import Home from "../components/organims/Home"
 export default function index() {
   const { user } = useAuth()
+
   return (
     <React.Fragment>
       <Head>
@@ -16,7 +17,7 @@ export default function index() {
       </Head>
       <div>
         {user === false && <Auth />}
-        {user && <Home />}
+        {user && <Home user={user} profile={"W"} />}
       </div>
     </React.Fragment>
   )

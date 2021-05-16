@@ -1,241 +1,37 @@
-import React from "react"
-import Header from "../../molecules/Navbar"
+import React, { useState, useEffect } from "react"
+import Navbar from "../../molecules/Navbar"
 import Link from "next/link"
+import Header from "../../molecules/Header/Wall"
+import { listenLatesUsers } from "../../../lib/db"
 import { useAuth } from "../../../lib/auth"
-import Auth from "../../../pages/Auth"
-export default function index() {
-  const { user, signout } = useAuth()
-  if (!user) {
-    ;<Auth />
-  }
+export default function index(props) {
+  const { signout } = useAuth()
+  const { user } = props
+  const { profile } = props
 
-  const avatarOverCard = {
-    position: "absolute",
-    top: "-5px",
-    left: "-5px",
-    boxShadow: "1px 1px 1px #333",
-    border: "#00A59B solid 3px",
-    borderRadius: "50%",
-    width: "45px",
-    height: "45px",
-    display: "inline-block",
-    marginRight: "20px",
-    paddingRight: "0px",
-  }
-  const cardHistory = {
-    position: "relative",
-    background: "#ddd",
-    borderRadius: "10px",
-  }
+  const [dataComentarios, setDataComentarios] = useState(undefined)
+  useEffect(() => {
+    let unsubscribe
+    if (user) {
+      unsubscribe = listenLatesUsers((newUsers) => {
+        setDataComentarios(newUsers)
+      })
+      return () => unsubscribe && unsubscribe()
+    }
+  }, [user])
+
+  if (dataComentarios === undefined) return null
+  const datos = dataComentarios
+    .slice()
+    .sort((a, b) => a.createAt - b.createAt)
+    .filter((e) => e.userid === user.uid)
+
+  if (datos === undefined) return null
 
   return (
     <React.Fragment>
-      <Header opt="2" />
-      <section
-        className="mb-0"
-        style={{ background: "#d5eceb", padding: "5px 0px 15px 0px" }}
-      >
-        <div className="mx-auto">
-          <div
-            className="grid items-center grid-cols-7 gap-6 profileOptions"
-            style={{ gap: "4rem" }}
-          >
-            <div
-              className="col-span-2 md:col-span-2 profilePhoto"
-              style={{ textAlign: "center" }}
-            >
-              <div className="grid grid-cols-3">
-                <div className="col-span-auto">
-                  <p className="text-center">
-                    <img
-                      src="/Quetzal.jpeg"
-                      style={{
-                        display: "inline",
-                        borderRadius: "50%",
-                        height: "70px",
-                        width: "70px",
-                      }}
-                    />
-                  </p>
-                </div>
-                <div className="col-span-2 text-left">
-                  <h1
-                    style={{
-                      fontSize: "2rem",
-                      fontWeight: "bold",
-                      color: "#00A59B",
-                    }}
-                  >
-                    Juan Pineda
-                  </h1>
-                  <h2
-                    style={{
-                      fontSize: "1.2rem",
-                      fontWeight: "400",
-                      color: "#58595B",
-                    }}
-                  >
-                    Desarollador
-                  </h2>
-                  <p className="my-4">
-                    <Link href="/">
-                      <a className="button2">
-                        <span style={{ marginRight: "5px" }}>+</span> Añadir
-                        Historia
-                      </a>
-                    </Link>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-span-7 md:col-span-3  profileAlias">
-              <div className="grid grid-cols-4 gap-4 items-center">
-                <div className="col-span-2 md:col-span-1" style={cardHistory}>
-                  <img src="/Quetzal.jpeg" style={avatarOverCard} />
-                  <p className="p-4" style={{ textAlign: "center" }}>
-                    <img
-                      src="/Quetzal.jpeg"
-                      style={{ display: "inline-block", borderRadius: "10px" }}
-                    />
-                  </p>
-                  <p
-                    className="px-4"
-                    style={{ fontSize: "0.9rem", fontWeight: "bold" }}
-                  >
-                    Juan Alberto Suarez
-                  </p>
-                  <p className="px-4" style={{ fontSize: "0.8rem" }}>
-                    14 Contactos es común
-                  </p>
-                  <p className="text-center px-4 mt-2">
-                    <button
-                      className="button2 mb-2"
-                      style={{
-                        minWidth: "initial",
-                        width: "100%",
-                        padding: "2px initial",
-                      }}
-                    >
-                      <span style={{ marginRight: "5px" }}>+</span> Agregar
-                    </button>
-                  </p>
-                </div>
-                <div className="col-span-2 md:col-span-1" style={cardHistory}>
-                  <img src="/Quetzal.jpeg" style={avatarOverCard} />
-                  <p className="p-4" style={{ textAlign: "center" }}>
-                    <img
-                      src="/Quetzal.jpeg"
-                      style={{ display: "inline-block", borderRadius: "10px" }}
-                    />
-                  </p>
-                  <p
-                    className="px-4"
-                    style={{ fontSize: "0.9rem", fontWeight: "bold" }}
-                  >
-                    Juan Alberto Suarez
-                  </p>
-                  <p className="px-4" style={{ fontSize: "0.8rem" }}>
-                    14 Contactos es común
-                  </p>
-                  <p className="text-center px-4 mt-2">
-                    <button
-                      className="button2 mb-2"
-                      style={{
-                        minWidth: "initial",
-                        width: "100%",
-                        padding: "2px initial",
-                      }}
-                    >
-                      <span style={{ marginRight: "5px" }}>+</span> Agregar
-                    </button>
-                  </p>
-                </div>
-                <div className="col-span-2 md:col-span-1" style={cardHistory}>
-                  <img src="/Quetzal.jpeg" style={avatarOverCard} />
-                  <p className="p-4" style={{ textAlign: "center" }}>
-                    <img
-                      src="/Quetzal.jpeg"
-                      style={{ display: "inline-block", borderRadius: "10px" }}
-                    />
-                  </p>
-                  <p
-                    className="px-4"
-                    style={{ fontSize: "0.9rem", fontWeight: "bold" }}
-                  >
-                    Juan Alberto Suarez
-                  </p>
-                  <p className="px-4" style={{ fontSize: "0.8rem" }}>
-                    14 Contactos es común
-                  </p>
-                  <p className="text-center px-4 mt-2">
-                    <button
-                      className="button2 mb-2"
-                      style={{
-                        minWidth: "initial",
-                        width: "100%",
-                        padding: "2px initial",
-                      }}
-                    >
-                      <span style={{ marginRight: "5px" }}>+</span> Agregar
-                    </button>
-                  </p>
-                </div>
-                <div className="col-span-2 md:col-span-1" style={cardHistory}>
-                  <img src="/Quetzal.jpeg" style={avatarOverCard} />
-                  <p className="p-4" style={{ textAlign: "center" }}>
-                    <img
-                      src="/Quetzal.jpeg"
-                      style={{ display: "inline-block", borderRadius: "10px" }}
-                    />
-                  </p>
-                  <p
-                    className="px-4"
-                    style={{ fontSize: "0.9rem", fontWeight: "bold" }}
-                  >
-                    Juan Alberto Suarez
-                  </p>
-                  <p className="px-4" style={{ fontSize: "0.8rem" }}>
-                    14 Contactos es común
-                  </p>
-                  <p className="text-center px-4 mt-2">
-                    <button
-                      className="button2 mb-2"
-                      style={{
-                        minWidth: "initial",
-                        width: "100%",
-                        padding: "2px initial",
-                      }}
-                    >
-                      <span style={{ marginRight: "5px" }}>+</span> Agregar
-                    </button>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-span-2 md:col-span-2 profileMore text-left">
-              <div className="grid grid-cols-4 items-center ml-4 pl-4">
-                <div className="col-span-1 text-right px-4">
-                  <img
-                    src="/icons/Iconos-Muro-General/birthday.png"
-                    style={{ width: "40px", display: "inline-block" }}
-                  />
-                </div>
-                <div className="col-span-3">
-                  <p>
-                    <Link href="/">
-                      <a style={{ fontSize: "1.1rem", color: "#808080" }}>
-                        Juan Ramón Crús está <br />
-                        cumpliendo años ahora
-                      </a>
-                    </Link>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Navbar opt="2" />
+      <Header datos={datos} profile={profile} />
 
       <section style={{ background: "#fbf4f4", padding: "30px 15px 0px" }}>
         <div className="mx-auto">
