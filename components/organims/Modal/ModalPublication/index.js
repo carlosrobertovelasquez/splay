@@ -66,7 +66,7 @@ export default function index(props) {
               .firestore()
               .collection("Publication")
               .add({
-                idUser: userData[0].userid,
+                idUser: userData,
                 file: url,
                 comments: comentarios,
                 state: "t",

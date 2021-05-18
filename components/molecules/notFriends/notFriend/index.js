@@ -1,5 +1,4 @@
 import React from "react"
-
 export default function index({
   avatar,
   firstName,
@@ -7,7 +6,6 @@ export default function index({
   profilePhoto,
   friendId,
 }) {
-  console.log(friendId)
   const avatarOverCard = {
     position: "absolute",
     top: "-5px",

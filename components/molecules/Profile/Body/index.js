@@ -20,7 +20,6 @@ export default function index(props) {
             </div>
             <div className="col-span-3">
               {profile === "W" ? <Section01 userData={userData} /> : null}
-
               <Section02 userData={userData} />
               <Publications userData={userData} />
             </div>

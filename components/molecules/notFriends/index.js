@@ -16,6 +16,15 @@ export default function index({ datos }) {
   }, [datos])
   const contenedorPrincipal = {
     display: "flex",
+    alignitems: "center",
+    position: "relative",
+    borderRadius: "10px",
+    overflow: "hidden",
+  }
+  const buttonIzqDer = {
+    fontSize: "40px",
+    with: "50px",
+    cursor: "pointer",
   }
 
   return (

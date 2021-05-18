@@ -94,7 +94,7 @@ export default function index(props) {
       <ModalUpload
         show={showModal}
         setShowModal={setShowModal}
-        userData={userData}
+        userData={userData[0].userid}
       />
     </React.Fragment>
   )
