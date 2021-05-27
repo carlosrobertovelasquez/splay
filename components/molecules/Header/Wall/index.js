@@ -69,7 +69,7 @@ export default function index({ datos, profile }) {
                       <input
                         disabled={true}
                         style={{ width: "100%", fontSize: "10px" }}
-                        value={`https://splay.com/createAccount/?ref=${datos[0].userid}`}
+                        value={`https://splay7.com/createAccount/?ref=${datos[0].userid}`}
                       ></input>
                     </div>
 
@@ -78,7 +78,7 @@ export default function index({ datos, profile }) {
                         className="bg-gray-splay2 hover:bg-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
                         onClick={() =>
                           navigator.clipboard.writeText(
-                            `https://splay.com/?ref=${datos[0].userid}`
+                            `https://splay7.com/?ref=${datos[0].userid}`
                           )
                         }
                       >
