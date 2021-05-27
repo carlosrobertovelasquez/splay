@@ -1,11 +1,11 @@
 import React from "react"
 import Wall from "./wall"
-import { useAuth } from "../../../lib/auth"
-export default function index() {
-  const { user } = useAuth()
+export default function index({ datos }) {
+  const { userid, following } = datos
+
   return (
     <React.Fragment>
-      <Wall userId={user.uid} />
+      <Wall userId={userid} following={following} />
     </React.Fragment>
   )
 }

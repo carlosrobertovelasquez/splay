@@ -24,29 +24,38 @@ export default function index({ datos, profile }) {
                 style={{ textAlign: "center" }}
               >
                 <div className="grid grid-cols-3 ">
-                  <div className="col-span-auto">
-                    <p className="text-center">
-                      <img
-                        src={datos[0].avatar}
-                        style={{
-                          display: "inline",
-                          borderRadius: "50%",
-                          height: "70px",
-                          width: "70px",
-                        }}
-                      />
-                    </p>
-                  </div>
+                  <Link href="/W/[id]" as={`/W/${datos[0].userid}`}>
+                    <a>
+                      <div className="col-span-auto">
+                        <p className="text-center">
+                          <img
+                            src={datos[0].avatar}
+                            style={{
+                              display: "inline",
+                              borderRadius: "50%",
+                              height: "70px",
+                              width: "70px",
+                            }}
+                          />
+                        </p>
+                      </div>
+                    </a>
+                  </Link>
+
                   <div className="col-span-2 text-left">
-                    <h1
-                      style={{
-                        fontSize: "2rem",
-                        fontWeight: "bold",
-                        color: "#00A59B",
-                      }}
-                    >
-                      {datos[0].firstName}
-                    </h1>
+                    <Link href="/W/[id]" as={`/W/${datos[0].userid}`}>
+                      <a>
+                        <h1
+                          style={{
+                            fontSize: "2rem",
+                            fontWeight: "bold",
+                            color: "#00A59B",
+                          }}
+                        >
+                          {datos[0].firstName}
+                        </h1>
+                      </a>
+                    </Link>
                     <h2
                       style={{
                         fontSize: "1.2rem",
@@ -56,13 +65,39 @@ export default function index({ datos, profile }) {
                     >
                       {datos[0].occupation}
                     </h2>
+                    <div>
+                      <input
+                        disabled={true}
+                        style={{ width: "100%", fontSize: "10px" }}
+                        value={`https://splay.com/createAccount/?ref=${datos[0].userid}`}
+                      ></input>
+                    </div>
+
                     <p className="my-4">
-                      <Link href="/">
-                        <a className="button2">
-                          <span style={{ marginRight: "5px" }}>+</span> Añadir
-                          Historia
-                        </a>
-                      </Link>
+                      <button
+                        className="bg-gray-splay2 hover:bg-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+                        onClick={() =>
+                          navigator.clipboard.writeText(
+                            `https://splay.com/?ref=${datos[0].userid}`
+                          )
+                        }
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                          />
+                        </svg>
+                        <span>Copy Link Referidos</span>
+                      </button>
                     </p>
                   </div>
                 </div>

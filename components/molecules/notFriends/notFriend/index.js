@@ -1,11 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
+import {
+  updateLoggedInUserFollowing,
+  updateFollowedUserFollowers,
+} from "../../../../lib/db"
+
 export default function index({
   avatar,
   firstName,
   lastName,
   profilePhoto,
   friendId,
+  docId,
+  id,
+  userid,
 }) {
+  const [followed, setFollowed] = useState(false)
   const avatarOverCard = {
     position: "absolute",
     top: "-5px",
@@ -23,11 +32,21 @@ export default function index({
     position: "relative",
     background: "#ddd",
     borderRadius: "10px",
+    marginRight: "5px",
+    marginLeft: "5px",
   }
 
-  return (
+  async function handleFollowUser() {
+    setFollowed(true)
+
+    await updateLoggedInUserFollowing(id, friendId, false)
+    await updateFollowedUserFollowers(docId, userid, false)
+    //   console.log("followin", id, "Mi usuario", userid)
+    //   console.log("followin", docId, "Mi usuario", userid)
+  }
+  return !followed ? (
     <React.Fragment>
-      <div className="col-span-2 md:col-span-1 " style={cardHistory}>
+      <div className="col-span-2 md:col-span-1 my-5 " style={cardHistory}>
         <img src={avatar} style={avatarOverCard} />
         <p className="p-4" style={{ textAlign: "center" }}>
           <img
@@ -46,6 +65,7 @@ export default function index({
 
         <p className="text-center px-4 mt-2">
           <button
+            onClick={handleFollowUser}
             className="button2 mb-2"
             style={{
               minWidth: "initial",
@@ -58,5 +78,5 @@ export default function index({
         </p>
       </div>
     </React.Fragment>
-  )
+  ) : null
 }

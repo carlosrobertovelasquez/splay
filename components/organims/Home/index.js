@@ -49,7 +49,7 @@ export default function index(props) {
                 userid={datos[0].userid}
               />
 
-              <Publication />
+              <Publication datos={datos[0]} />
             </div>
 
             <Ritgh />

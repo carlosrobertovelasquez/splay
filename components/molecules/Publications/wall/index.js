@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { listenLatesPublications } from "../../../../lib/db"
-import Skeleton from "react-loading-skeleton"
+
 import Body from "./Body"
-export default function index({ userId }) {
+export default function index({ userId, following }) {
   const [dataPublication, setDataPublication] = useState(undefined)
   useEffect(() => {
     let unsubscribe
@@ -15,14 +15,20 @@ export default function index({ userId }) {
   }, [userId])
 
   if (dataPublication === undefined) return null
-  const datos = dataPublication
-    .slice()
-    .sort((a, b) => a.dateCreate - b.dateCreate)
-    .filter((e) => e.idUser === userId)
+  following.push(userId)
 
+  const datos = []
+  dataPublication.forEach(function (task) {
+    for (let index = 0; index < following.length; index++) {
+      if (following[index] === task.idUser) {
+        datos.push(task)
+      }
+    }
+  })
   return (
     <React.Fragment>
       {datos
+        .sort((a, b) => a.dateCreate - b.dateCreate)
         .map((publi) => (
           <Body
             key={publi.id}

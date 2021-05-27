@@ -16,6 +16,8 @@ module.exports = {
         base: "#616161",
         background: "#fafafa",
         primary: "#606060",
+        splay: "#B2DFDD",
+        splay2: "#00A59B",
       },
       indigo: {
         primary: "#00A59B",

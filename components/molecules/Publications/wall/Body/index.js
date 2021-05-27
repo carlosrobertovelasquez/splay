@@ -23,7 +23,7 @@ export default function index({
   return (
     <React.Fragment>
       <div className="mt-5 boxWidget">
-        {!comments ? (
+        {!typeFile ? (
           <Skeleton count={1} height={250} />
         ) : (
           <div className="grid grid-cols-12">

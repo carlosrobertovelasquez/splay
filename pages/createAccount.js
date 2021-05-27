@@ -6,7 +6,7 @@ import { doesUsernameExist, createFriends } from "../lib/db"
 import Link from "next/link"
 import Quetzal from "../public/Quetzal.jpeg"
 import firebase from "../lib/firebase"
-import Router from "next/router"
+import { Router, useRouter } from "next/router"
 export default function createAccount() {
   const { user, signout } = useAuth()
   const [email, setEmail] = useState("")
@@ -28,7 +28,7 @@ export default function createAccount() {
     mes === "00" ||
     ano === "00" ||
     sexo === ""
-
+  /*
   useEffect(() => {
     let unsubscribe
     if (user) {
@@ -36,7 +36,9 @@ export default function createAccount() {
     }
     return () => unsubscribe && unsubscribe()
   }, [user])
-
+*/
+  const router = useRouter()
+  console.log(router.query)
   const handleLogin = async (event) => {
     event.preventDefault()
     const usernameExists = await doesUsernameExist(email)
@@ -359,7 +361,7 @@ export default function createAccount() {
                   </div>
                 </div>
 
-                <Link href="/">
+                <Link href="/?state=false">
                   <p className="mt-8">
                     {" "}
                     ¿Ya tienes{" "}
