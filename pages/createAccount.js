@@ -4,7 +4,7 @@ import Head from "next/head"
 import { useAuth } from "../lib/auth"
 import { doesUsernameExist, createFriends } from "../lib/db"
 import Link from "next/link"
-import Quetzal from "../public/Quetzal.jpeg"
+import Quetzal2 from "../public/Quetzal.jpeg"
 import firebase from "../lib/firebase"
 import { Router, useRouter } from "next/router"
 export default function createAccount() {
@@ -93,12 +93,13 @@ export default function createAccount() {
       setError("Correo ya existe por favor ingresar otro")
     }
   }
+
   return (
     <div className="  min-w-screen min-h-screen bg-gray-primary flex items-center justify-center px-5 py-5">
       <div className="bg-indigo-tercero  rounded-3xl shadow-xl w-full overflow-hidden max-w-full">
         <div className="md:flex w-full text-center">
           <div
-            style={{ backgroundImage: `url(${Quetzal})` }}
+            style={{ backgroundImage: `url(${Quetzal2})` }}
             className="lg:flex w-1/2 hidden  bg-gray-primary bg-no-repeat bg-cover bg-center relative items-center"
           >
             <div className="absolute bg-black opacity-10 inset-0 z-0" />

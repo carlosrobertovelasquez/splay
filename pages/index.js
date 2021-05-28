@@ -5,7 +5,6 @@ import Auth from "../pages/Auth"
 import Home from "../components/organims/Home"
 export default function index() {
   const { user } = useAuth()
-
   return (
     <React.Fragment>
       <Head>

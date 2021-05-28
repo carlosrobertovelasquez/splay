@@ -26,17 +26,33 @@ export default function index({ datos }) {
     fontSize: "40px",
     with: "50px",
     cursor: "pointer",
-
+    position: "relative",
     border: "none",
+    display: "inline-block",
+    zIndex: "500",
+    left: "0",
+    outline: "0",
+  }
+  const buttonDerecho = {
+    fontSize: "40px",
+    with: "50px",
+    cursor: "pointer",
+    position: "relative",
+    border: "none",
+    outline: "0",
+    display: "inline-block",
+    zIndex: "500",
+    right: "0",
   }
   const contenedorControles = {
     display: "flex",
     alignitems: "center",
-    position: "relative",
     borderRadius: "10px",
     marginRight: "20px",
     paddingRight: "0px",
     cursor: "pointer",
+    position: "relative",
+    zIndex: "500",
   }
 
   const derecha = () => {
@@ -50,37 +66,38 @@ export default function index({ datos }) {
   }
   return (
     <React.Fragment>
-      <div className="col-span-7 md:col-span-3  profileAlias">
+      <div className="col-span-3 md:col-span-3  " style={contenedorPrincipal}>
+        <button
+          onClick={derecha}
+          role="button"
+          id="flecha-izquierda"
+          style={buttonIzqDer}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+
         {!notFriend ? (
           <Skeleton count={1} height={250} />
         ) : (
           <div
             id="contenedor"
-            className="grid grid-cols-4 gap-4 items-center contenedor "
+            className=" contenedor "
             style={contenedorPrincipal}
           >
             <div style={contenedorControles}>
-              <button
-                onClick={derecha}
-                role="button"
-                id="flecha-izquierda"
-                style={buttonIzqDer}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button>
               {notFriend
                 .map((notfriend) => (
                   <NotFriend
@@ -96,26 +113,31 @@ export default function index({ datos }) {
                   />
                 ))
                 .reverse()}
-              <button onClick={izquierda} role="button" id="flecha-derecho">
-                {" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
             </div>
           </div>
         )}
+        <button
+          onClick={izquierda}
+          role="button"
+          id="flecha-derecho"
+          style={buttonDerecho}
+        >
+          {" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
       </div>
     </React.Fragment>
   )

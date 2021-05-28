@@ -32,8 +32,9 @@ export default function index({
     position: "relative",
     background: "#ddd",
     borderRadius: "10px",
-    marginRight: "5px",
-    marginLeft: "5px",
+    border: "1px solid #00A59B",
+    // marginRight: "1px",
+    // marginLeft: "1px",
   }
 
   async function handleFollowUser() {
