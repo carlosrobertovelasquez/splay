@@ -64,11 +64,13 @@ export default function index() {
           trabajaEn: "ND",
           estadoCivil: "ND",
           occupation: "ND",
-          estado: "T",
+          estado: false,
           dateCreate: Date.now(),
           followers: [],
           following: [],
           referido: referido,
+          emailVerified: false,
+          membership: "F",
         })
         // Pendiente de cambiar el id de Splay oficial
         //   await createFriends(
@@ -112,8 +114,10 @@ export default function index() {
       .then(() => {
         if (user === false) {
           setError("Su cuenta no esta Validad revise su buzon de correo")
+        } else {
+          console.log("aqui estamos")
+          router.push("/")
         }
-        router.push("/")
       })
       .catch((error) => {
         setError(error.message)
