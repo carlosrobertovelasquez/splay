@@ -47,7 +47,7 @@ export default function index({
   }
   return !followed ? (
     <React.Fragment>
-      <div className="col-span-2 md:col-span-1 my-5 " style={cardHistory}>
+      <div className="col-span-2 md:col-span-1 my-5  " style={cardHistory}>
         <img src={avatar} style={avatarOverCard} />
         <p className="p-4" style={{ textAlign: "center" }}>
           <img
