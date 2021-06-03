@@ -230,10 +230,10 @@ export default function index() {
                     </button>
                   </div>
                   <div className="flex">
-                    <div className="w-1/2  text-center">
+                    <div className=" mb-10 w-1/2  text-center">
                       <button
                         onClick={() => setCrearCuenta(true)}
-                        className="bg-indigo-primary hover:bg-gray-splay text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+                        className="bg-indigo-primary hover:bg-gray-splay text-gray-800 font-bold  py-2 px-4 rounded inline-flex items-center"
                       >
                         Crear tu cuenta
                       </button>
