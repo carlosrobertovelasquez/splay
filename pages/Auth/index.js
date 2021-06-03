@@ -18,7 +18,7 @@ export default function index() {
   const [error, setError] = useState("")
   const [crearCuenta, setCrearCuenta] = useState(false)
   const [actionModal, setActionModal] = useState(false)
-
+  const [ocultarBoton, setOcultarBoton] = useState(true)
   // Crear Cuenta
   const [nombre, setNombre] = useState("")
   const [apellido, setApellido] = useState("")
@@ -37,6 +37,7 @@ export default function index() {
     ano === "00" ||
     sexo === ""
   const handleLoginNew = async (event) => {
+    setOcultarBoton(false)
     event.preventDefault()
     const usernameExists = await doesUsernameExist(email)
     // console.log(usernameExists)
@@ -81,6 +82,7 @@ export default function index() {
         //   signout()
         setActionModal(true)
         setCrearCuenta(false)
+        setOcultarBoton(true)
       } catch (error) {
         setNombre("")
         setApellido("")
@@ -549,14 +551,16 @@ export default function index() {
 
                     <div className="flex -mx-3 mt-8">
                       <div className="w-full px-3 mb-5">
-                        <button
-                          disabled={isInvalid}
-                          className={`block w-full max-w-xs mx-auto bg-indigo-primary hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold ${
-                            isInvalidNewCuenta && "opacity-50"
-                          } `}
-                        >
-                          REGÍSTRATE AHORA
-                        </button>
+                        {ocultarBoton && (
+                          <button
+                            disabled={isInvalidNewCuenta}
+                            className={`block w-full max-w-xs mx-auto bg-indigo-primary hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold ${
+                              isInvalidNewCuenta && "opacity-50"
+                            } `}
+                          >
+                            REGÍSTRATE AHORA
+                          </button>
+                        )}
                       </div>
                     </div>
 
