@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import Skeleton from "react-loading-skeleton"
 import { getSuggestedProfile } from "../../../lib/db"
 import NotFriend from "./notFriend"
 export default function index({ datos }) {

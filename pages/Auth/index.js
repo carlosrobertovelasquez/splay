@@ -136,22 +136,27 @@ export default function index() {
     <React.Fragment>
       {!crearCuenta ? (
         <div className="min-w-screen bg-indigo-tercero text-gray-primary min-h-screen bg-gray-primary flex items-center justify-center">
-          <div className="md:flex">
-            <div className="lg:w-2/3 w-auto px-1 lg:mb-30 mb-20 lg:border-r-4 text-center">
-              <Imagen src="/Logo01.png" width={300} height={60} />
+          <div className="mt-10  md:flex">
+            <div className="  mb-5   lg:w-2/3 w-auto px-1 lg:mb-30  lg:border-r-4 text-center">
+              <Imagen
+                src="/Logo01.png"
+                className="mt-16"
+                width={300}
+                height={60}
+              />
               <p
-                className="text-5xl mt-16 mx-39 font-bold text-center"
+                className="text-xl md:text-5xl mt-5  md:mt-16 mx-39 font-bold text-center"
                 style={{ color: "#58595B" }}
               >
                 Convierte tu red en un mundo de oportunidades
               </p>
-              <p className="text-2xl text-indigo-primary mt-4 mx-39 font-bold text-center">
+              <p className="text-sm  md:text-2xl text-indigo-primary mt-4 mx-39 font-bold text-center">
                 Descubre <span style={dotmiddle}>&#183;</span> Conecta{" "}
                 <span style={dotmiddle}>&#183;</span> Comparte
               </p>
 
               <div className="bg-rainbow" style={{ color: "#000" }}>
-                <p className="text-indigo-primary">
+                <p className="text-indigo-primary ">
                   <Link href="">
                     <a>Crear anuncio</a>
                   </Link>{" "}
@@ -225,7 +230,7 @@ export default function index() {
                     </button>
                   </div>
                   <div className="flex">
-                    <div className="sm:w-auto md:w-1/2 text-center">
+                    <div className="w-1/2  text-center">
                       <button
                         onClick={() => setCrearCuenta(true)}
                         className="bg-indigo-primary hover:bg-gray-splay text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
@@ -233,7 +238,7 @@ export default function index() {
                         Crear tu cuenta
                       </button>
                     </div>
-                    <div className="sm:w-auto md:w-1/2 text-center">
+                    <div className="w-auto  text-center">
                       <button
                         onClick={olvideContrasena}
                         className="bg-indigo-primary hover:bg-gray-splay text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
