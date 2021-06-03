@@ -17,6 +17,7 @@ export default function index() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [crearCuenta, setCrearCuenta] = useState(false)
+  const [actionModal, setActionModal] = useState(false)
 
   // Crear Cuenta
   const [nombre, setNombre] = useState("")
@@ -78,6 +79,7 @@ export default function index() {
         //  createdUserResult.user.uid
         // )
         //   signout()
+        setActionModal(true)
         setCrearCuenta(false)
       } catch (error) {
         setNombre("")
@@ -571,6 +573,37 @@ export default function index() {
                     </p>
                   </div>
                 </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {actionModal && (
+        <div
+          class="min-w-screen h-screen overflow-x-hidden overflow-y-auto fixed  my-auto inset-0 z-50 outline-none focus:outline-none  items-center flex justify-center"
+          id="modal-id"
+        >
+          <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg bg-indigo-tercero ">
+            <div class="">
+              <div class="text-center p-5 flex-auto justify-center">
+                <img src="images/ave-1.png" style={ave1} />
+
+                <h2 class="text-xl font-bold py-4 ">
+                  Felicidades !!!!!! Ya eres parte de red Splay7
+                </h2>
+                <p class="text-sm text-gray-500 px-8">
+                  te enviamos un correo eletronico a tu cuenta sino lo
+                  encuentras buscalo en la bandeja de no deseados o spam
+                </p>
+              </div>
+
+              <div class="p-3  mt-2 text-center space-x-4 md:block">
+                <button
+                  onClick={() => setActionModal(false)}
+                  class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
+                >
+                  Aceptar
+                </button>
               </div>
             </div>
           </div>
