@@ -16,7 +16,7 @@ export default function index({ datos, profile }) {
         >
           <div className="mx-auto">
             <div
-              className="grid items-center grid-cols-7 gap-6 profileOptions"
+              className=" grid-cols-2  grid items-center  md:grid-cols-7 gap-6 profileOptions"
               style={{ gap: "4rem" }}
             >
               <div
@@ -103,15 +103,15 @@ export default function index({ datos, profile }) {
                 </div>
               </div>
               <NotFriends datos={datos} />
-              <div className="col-span-2 md:col-span-2 profileMore text-left">
-                <div className="grid grid-cols-4 items-center ml-4 pl-4">
+              <div className="  md:col-span-2  text-left">
+                <div className=" hidden md:grid grid-cols-4 items-center ml-4 pl-4">
                   <div className="col-span-1 text-right px-4">
                     <img
                       src="/icons/Iconos-Muro-General/birthday.png"
                       style={{ width: "40px", display: "inline-block" }}
                     />
                   </div>
-                  <div className="col-span-3">
+                  <div className=" col-span-3">
                     <p>
                       <Link href="/">
                         <a style={{ fontSize: "1.1rem", color: "#808080" }}>

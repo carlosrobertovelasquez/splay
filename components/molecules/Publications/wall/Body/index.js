@@ -30,7 +30,7 @@ export default function index({
             <Avatar idUser={idUser} dateCreate={dateCreate} alt="avatar" />
 
             <div
-              className="col-span-1"
+              className="  md:col-span-1"
               style={{ marginTop: "auto", marginBottom: "auto" }}
             >
               <p className="text-right">

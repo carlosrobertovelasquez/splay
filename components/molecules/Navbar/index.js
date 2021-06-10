@@ -43,7 +43,7 @@ export default function index() {
         </div>
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow"></div>
-          <div>
+          <div className="hidden">
             <Link href="/">
               <a className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0">
                 <img style={{ width: "40px" }} src={iconHome} />

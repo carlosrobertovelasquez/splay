@@ -37,12 +37,9 @@ export default function index(props) {
 
       <section style={{ background: "#fbf4f4", padding: "30px 15px 0px" }}>
         <div className="mx-auto">
-          <div
-            className="grid grid-cols-7 gap-6 profileOptions"
-            style={{ gap: "4rem" }}
-          >
+          <div className="grid grid-cols-5 ">
             <Left />
-            <div className="col-span-7 md:col-span-3  profileAlias">
+            <div className="col-span-7 md:col-span-3  md:mx-20 profileAlias">
               <Center
                 avatar={datos[0].avatar}
                 firstName={datos[0].firstName}

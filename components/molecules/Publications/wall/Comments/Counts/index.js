@@ -23,7 +23,7 @@ export default function index({ publicactionId }) {
   return (
     <React.Fragment>
       <div
-        className="col-span-11"
+        className="col-span-12 md:col-span-11"
         style={{
           borderBottom: "1px solid #ddd",
           paddingBottom: "10px",
