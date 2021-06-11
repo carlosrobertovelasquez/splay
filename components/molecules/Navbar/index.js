@@ -13,16 +13,14 @@ export default function index() {
         className="flex items-center justify-between flex-wrap bg-teal-500 p-2"
         style={{ background: "#B2DFDD" }}
       >
-        <div className="flex items-center flex-shrink-0 text-white mr-6 py-2">
+        <div className="flex items-center flex-shrink-0 text-white  py-2">
           <img className="fill-current mr-2" width="100" src={Logo}></img>
           <div className="pl-4">
             <input
               type="text"
-              className="px-2"
+              className="px-2 w-40 h-10 md:w-96 "
               style={{
-                width: "250px",
                 borderRadius: "7px",
-                height: "35px",
                 background: "#d5eceb",
               }}
               placeholder="Buscar"
@@ -41,9 +39,8 @@ export default function index() {
             </svg>
           </button>
         </div>
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div className="text-sm lg:flex-grow"></div>
-          <div className="hidden">
+        <div className="    flex items-center  mx-11  md:items-center md:w-auto">
+          <div>
             <Link href="/">
               <a className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0">
                 <img style={{ width: "40px" }} src={iconHome} />

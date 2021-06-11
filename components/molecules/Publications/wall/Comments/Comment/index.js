@@ -22,8 +22,11 @@ export default function index({ comment, createAt, idUser }) {
           className="grid grid-cols-10 gap-1"
           style={{ gridTemplateColumns: "repeat(16, minmax(0, 1fr))" }}
         >
-          <div className="col-span-2 ">
-            <p className="text-left">
+          <div
+            className=" col-span-2 md:col-span-1 "
+            style={{ marginLeft: "8px" }}
+          >
+            <p className="text-left ">
               <Avatar idUser={idUser} />
             </p>
           </div>

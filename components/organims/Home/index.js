@@ -35,7 +35,7 @@ export default function index(props) {
       <Navbar opt="2" />
       <Header datos={datos} profile={profile} />
 
-      <section style={{ background: "#fbf4f4", padding: "30px 15px 0px" }}>
+      <section className="movil">
         <div className="mx-auto">
           <div className="grid grid-cols-5 ">
             <Left />

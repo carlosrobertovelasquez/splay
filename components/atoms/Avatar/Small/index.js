@@ -18,7 +18,7 @@ export default function index({ idUser, alt, dateCreate }) {
   if (dataUser === undefined) return null
   return (
     <React.Fragment>
-      <div className="col-span-2 md:col-span-1">
+      <div className="col-span-2 ml-2 md:col-span-1">
         <p
           className="text-left"
           style={{ fontSize: "1.8rem", fontWeight: "bold" }}

@@ -15,7 +15,7 @@ export default function index({ avatar, firstName, userid }) {
             <Skeleton count={1} height={100} />
           </>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-5   gap-4">
+          <div className="grid grid-cols-1   md:grid-cols-5   md:gap-4">
             <div>
               <p style={{ textAlign: "center" }}>
                 <img
@@ -29,8 +29,8 @@ export default function index({ avatar, firstName, userid }) {
                 />
               </p>
             </div>
-            <div className="col-span-4">
-              <div className="grid grid-cols-3 gap-4">
+            <div className="col-span-4 ml-10">
+              <div className=" grid grid-cols-3 gap-4  ">
                 <div className="col-span-3" onClick={Modal}>
                   <p
                     style={{
