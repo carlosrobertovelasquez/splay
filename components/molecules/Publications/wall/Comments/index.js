@@ -21,9 +21,9 @@ export default function index({ commentId }) {
 
   if (dataComentarios === undefined) return null
   const datos = dataComentarios
-    .slice()
-    .sort((a, b) => a.createAt - b.createAt)
     .filter((e) => e.idPublication === commentId)
+    .sort((a, b) => a.createAt - b.createAt)
+
   // Enviamos Comentarios
   const send = async () => {
     await firebase
@@ -62,12 +62,12 @@ export default function index({ commentId }) {
             </p>
           </div>
           <div
-            className="col-span-9"
+            className="col-span-9 px-2 md:px-0"
             style={{ gridColumn: "span 14 / span 14" }}
           >
             <div
               style={{
-                padding: "7px 15px",
+                padding: "5px 15px",
                 background: "#ddd",
                 borderRadius: "10px",
                 border: "1px solid #ccc",
@@ -83,7 +83,8 @@ export default function index({ commentId }) {
                     width: "100%",
                     background: "unset",
                     fontSize: "0.8rem",
-                    padding: 5,
+                    paddingLeft: 5,
+                    paddingRight: 5,
                   }}
                   onChange={(e) => setComentarios(e.target.value)}
                   value={comentarios}

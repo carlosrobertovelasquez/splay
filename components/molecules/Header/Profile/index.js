@@ -79,7 +79,7 @@ export default function index({ userId, profile }) {
   })
 
   return (
-    <div>
+    <>
       <section
         className="mb-4"
         style={{ background: "#d5eceb", padding: "5px 0px 15px 0px" }}
@@ -181,6 +181,7 @@ export default function index({ userId, profile }) {
             </div>
           </div>
           <div className="grid grid-cols-4 gap-4 profileOptions"></div>
+
           <Header02
             userId={userId[0].id}
             firstName={userId[0].firstName}
@@ -230,6 +231,6 @@ export default function index({ userId, profile }) {
           </div>
         </div>
       )}
-    </div>
+    </>
   )
 }

@@ -9,16 +9,16 @@ export default function index(props) {
   const { profile } = props
   const { userData } = props
   return (
-    <React.Fragment>
+    <>
       <section>
-        <div className="container2 mx-auto">
+        <div className="md:container2 mx-auto">
           <div className="grid grid-cols-5 gap-4 profileOptions">
-            <div className="col-span-2 navbar">
+            <div className=" hidden    md:col-span-2 navbar md:block ">
               <Information userData={userData} profile={profile} />
               <Friends userData={userData} />
               <Photo userData={userData} />
             </div>
-            <div className="col-span-3">
+            <div className="col-span-12 md:col-span-3">
               {profile === "W" ? <Section01 userData={userData} /> : null}
               <Section02 userData={userData} />
               <Publications userData={userData} />
@@ -26,6 +26,6 @@ export default function index(props) {
           </div>
         </div>
       </section>
-    </React.Fragment>
+    </>
   )
 }

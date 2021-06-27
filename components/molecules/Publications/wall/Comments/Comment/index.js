@@ -16,7 +16,7 @@ export default function index({ comment, createAt, idUser }) {
   }, [idUser])
   if (dataUser === undefined) return null
   return (
-    <React.Fragment>
+    <>
       <div className="col-span-12 mb-5">
         <div
           className="grid grid-cols-10 gap-1"
@@ -31,7 +31,7 @@ export default function index({ comment, createAt, idUser }) {
             </p>
           </div>
           <div
-            className="col-span-9"
+            className="col-span-9 pr-2"
             style={{ gridColumn: "span 14 / span 14" }}
           >
             <div
@@ -49,6 +49,6 @@ export default function index({ comment, createAt, idUser }) {
         </div>
         <p className="mx-11">{fecha}</p>
       </div>
-    </React.Fragment>
+    </>
   )
 }

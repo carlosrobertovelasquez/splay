@@ -25,6 +25,7 @@ export default function index({ userId, following }) {
       }
     }
   })
+
   return (
     <React.Fragment>
       {datos

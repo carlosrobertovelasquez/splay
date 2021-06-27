@@ -2,7 +2,7 @@ import React from "react"
 
 export default function index() {
   return (
-    <div className="mt-5 boxWidget">
+    <div className=" hidden md:mt-5 boxWidget md:block">
       <div className="grid grid-cols-3 gap-4">
         <div>
           <p

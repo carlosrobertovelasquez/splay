@@ -40,7 +40,7 @@ export default function index({
               </p>
             </div>
 
-            <div className="col-span-12 mt-4 mb-4">
+            <div className="col-span-12 mt-4 mb-4 px-2">
               <p className="text-left" style={{ fontSize: "0.9rem" }}>
                 {comments}
               </p>
@@ -69,23 +69,14 @@ export default function index({
 
             <Counts publicactionId={id} />
             <div
-              className="col-span-11 mb-5"
+              className="col-span-12 mb-5"
               style={{
                 borderBottom: "2px solid #bbb",
                 paddingBottom: "10px",
                 paddingTop: "10px",
               }}
             >
-              <div className="grid grid-cols-3">
-                <div className="text-center">
-                  <button>
-                    <img
-                      src="/icons/icon6.png"
-                      style={{ width: "20px", display: "inline-block" }}
-                    />{" "}
-                    Guardar
-                  </button>
-                </div>
+              <div className="flex justify-around">
                 <div className="text-center">
                   <button>
                     <img
@@ -93,6 +84,15 @@ export default function index({
                       style={{ width: "20px", display: "inline-block" }}
                     />{" "}
                     Comentar
+                  </button>
+                </div>
+                <div className="text-center">
+                  <button>
+                    <img
+                      src="/icons/icon6.png"
+                      style={{ width: "20px", display: "inline-block" }}
+                    />{" "}
+                    Guardar
                   </button>
                 </div>
                 <div className="text-center">

@@ -66,71 +66,75 @@ export default function index({
   })
 
   return (
-    <React.Fragment>
-      <div className="grid grid-cols-4 gap-4 profileOptions">
-        <div className="profilePhoto" style={{ textAlign: "center" }}>
-          {profile === "W" ? (
-            <button
-              onClick={handleUploadAvatar}
-              {...getRootProps()}
+    <>
+      <div className="  md:flex justify-between">
+        <div className=" flex  justify-evenly ">
+          <div className="profilePhoto" style={{ textAlign: "center" }}>
+            {profile === "W" ? (
+              <button
+                onClick={handleUploadAvatar}
+                {...getRootProps()}
+                style={{
+                  position: "relative",
+                  top: "100px",
+                  background: "#58595B",
+                  color: "#fff",
+                  left: "0px",
+                  borderRadius: "5px",
+                }}
+              >
+                <img
+                  src="/icons/photo.png"
+                  style={{
+                    width: "35px",
+                    display: "inline-block",
+                  }}
+                />
+                <input {...getInputProps()} />
+              </button>
+            ) : null}
+            <div>
+              <Avatar src={avatar === "ND" ? AvatarAve : avatar} alt="Avatar" />
+            </div>
+          </div>
+          <div className=" pt-8">
+            <h1
               style={{
-                position: "relative",
-                top: "100px",
-                background: "#58595B",
-                color: "#fff",
-                left: "0px",
-                borderRadius: "5px",
+                fontSize: "2.5rem",
+                fontWeight: "bold",
+                color: "#00A59B",
               }}
             >
-              <img
-                src="/icons/photo.png"
-                style={{
-                  width: "35px",
-                  display: "inline-block",
-                }}
-              />
-              <input {...getInputProps()} />
-            </button>
-          ) : null}
-
-          <Avatar src={avatar === "ND" ? AvatarAve : avatar} alt="Avatar" />
+              {firstName}
+            </h1>
+            <h2
+              style={{
+                fontSize: "1.8rem",
+                fontWeight: "400",
+                color: "#58595B",
+              }}
+            >
+              {occupation}
+            </h2>
+          </div>
         </div>
-
-        <div className="profileAlias">
-          <h1
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: "bold",
-              color: "#00A59B",
-            }}
-          >
-            {firstName}
-          </h1>
-          <h2
-            style={{
-              fontSize: "1.8rem",
-              fontWeight: "400",
-              color: "#58595B",
-            }}
-          >
-            {occupation}
-          </h2>
+        <div className=" flex justify-center ">
+          <div className="profileActions">
+            {profile === "W" ? (
+              <>
+                <p className="my-4">
+                  <Link href="/">
+                    <a className="button2">Añadir Historia</a>
+                  </Link>
+                </p>
+                <p>
+                  <button className="button3">Editar Perfil</button>
+                </p>
+              </>
+            ) : null}
+          </div>
         </div>
-        <div className="profileActions">
-          {profile === "W" ? (
-            <>
-              <p className="my-4">
-                <Link href="/">
-                  <a className="button2">Añadir Historia</a>
-                </Link>
-              </p>
-              <p>
-                <button className="button3">Editar Perfil</button>
-              </p>
-            </>
-          ) : null}
-        </div>
-        <div className="profileMore text-right">
+        <div className=" hidden  md:profileMore text-right md:block">
           <p>
             <Link href="/">
               <a style={{ fontSize: "1.5rem", color: "#808080" }}>
@@ -155,6 +159,6 @@ export default function index({
           <progress className="w-full" value={uploadValue} max="100"></progress>
         )}
       </div>
-    </React.Fragment>
+    </>
   )
 }

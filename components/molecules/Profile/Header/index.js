@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react"
-import Link from "next/link"
 import { useDropzone } from "react-dropzone"
-import Avatar from "../../../atoms/Avatar"
+
 import { v4 as uuidv4 } from "uuid"
 import firebase from "../../../../lib/firebase"
 import { updatePhotoProfile, deletePhotoProfile } from "../../../../lib/db"
@@ -81,7 +80,7 @@ export default function index({ userId, profile }) {
   })
 
   return (
-    <div>
+    <>
       <section
         className="mb-4"
         style={{ background: "#d5eceb", padding: "5px 0px 15px 0px" }}
@@ -89,6 +88,7 @@ export default function index({ userId, profile }) {
         <div className="container mx-auto">
           <div className="imagenPortada" style={{ height: "320px" }}>
             <div
+              className="bg-contain"
               style={{
                 backgroundImage: `url("${userId[0].profilePhoto}")`,
                 height: "280px",
@@ -232,6 +232,6 @@ export default function index({ userId, profile }) {
           </div>
         </div>
       )}
-    </div>
+    </>
   )
 }

@@ -12,8 +12,10 @@ export default function index(props) {
   const { profile } = props
 
   const [dataComentarios, setDataComentarios] = useState(undefined)
+
   useEffect(() => {
     let unsubscribe
+
     if (user) {
       unsubscribe = listenLatesUsers((newUsers) => {
         setDataComentarios(newUsers)
@@ -24,14 +26,12 @@ export default function index(props) {
 
   if (dataComentarios === undefined) return null
   const datos = dataComentarios
-    .slice()
-    .sort((a, b) => a.createAt - b.createAt)
     .filter((e) => e.userid === user.uid)
+    .sort((a, b) => a.createAt - b.createAt)
 
   if (datos === undefined) return null
-
   return (
-    <React.Fragment>
+    <>
       <Navbar opt="2" />
       <Header datos={datos} profile={profile} />
 
@@ -53,6 +53,6 @@ export default function index(props) {
           </div>
         </div>
       </section>
-    </React.Fragment>
+    </>
   )
 }

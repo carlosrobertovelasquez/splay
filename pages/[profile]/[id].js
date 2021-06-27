@@ -7,11 +7,11 @@ export default function profile() {
   const userId = router.query.id
   const profile = router.query.profile
   return (
-    <React.Fragment>
+    <>
       <Head>
         <title>Splay7 Wall</title>
       </Head>
       <Profile userId={userId} profile={profile} />
-    </React.Fragment>
+    </>
   )
 }
