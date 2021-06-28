@@ -16,20 +16,22 @@
   }
 }
 
-
-
-
-
 .boxWidget {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 15px 0px;
   background: #eef2f3;
 }
+.boxWidgetLeft {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 10px;
+  background: #eef2f3;
+}
 
-.movil{
-   background: "#fbf4f4"; 
-   padding: "30px 15px 0px";
+.movil {
+  background: "#fbf4f4";
+  padding: "30px 15px 0px";
 }
 .friendname {
   color: #00a59b;

@@ -4,6 +4,7 @@ import { listenLatesPublications } from "../../../../lib/db"
 import Body from "./Body"
 export default function index({ userId, following }) {
   const [dataPublication, setDataPublication] = useState(undefined)
+
   useEffect(() => {
     let unsubscribe
     if (userId) {
@@ -15,7 +16,16 @@ export default function index({ userId, following }) {
   }, [userId])
 
   if (dataPublication === undefined) return null
-  following.push(userId)
+
+  const userExits = (arry) => {
+    const resul = arry.includes(userId)
+    if (!resul) {
+      following.push(userId)
+    }
+    return following
+  }
+
+  userExits(following)
 
   const datos = []
   dataPublication.forEach(function (task) {
@@ -25,7 +35,6 @@ export default function index({ userId, following }) {
       }
     }
   })
-
   return (
     <React.Fragment>
       {datos
@@ -39,6 +48,7 @@ export default function index({ userId, following }) {
             idUser={publi.idUser}
             typeFile={publi.typeFile}
             id={publi.id}
+            likes={publi.likes}
           />
         ))
         .reverse()}

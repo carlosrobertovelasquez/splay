@@ -17,19 +17,23 @@ export default function index(props) {
   }, [userid])
 
   if (dataPublication === undefined) return null
-  const datos = dataPublication
-    .slice()
-    .sort((a, b) => a.createAt - b.createAt)
-    .filter((e) => e.userId === userid)
+
+  const dataFollowing = userData[0].following
+  const datos = dataFollowing.map(function (data) {
+    return data
+  })
+
+  const countFollowing = dataFollowing.length - 1
+
   return (
-    <div className="mt-4 boxWidget">
+    <div className="mt-4 boxWidgetLeft">
       <div className="grid grid-cols-2 gap-4">
         <div>
           <h2
             className="mb-4"
-            style={{ fontSize: "2.1rem", fontWeight: "bold", color: "#58595B" }}
+            style={{ fontSize: "1.8rem", fontWeight: "bold", color: "#58595B" }}
           >
-            Amigos
+            Seguidores {countFollowing}
           </h2>
         </div>
         <div style={{ marginTop: "auto", marginBottom: "auto" }}>
@@ -41,15 +45,7 @@ export default function index(props) {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-4">
-        {datos
-          .map((publi) => (
-            <Amigo
-              key={publi.id}
-              createAt={publi.createAt}
-              friend={publi.friend}
-            />
-          ))
-          .reverse()}
+        {datos.map((publi) => <Amigo key={publi} friend={publi} />).reverse()}
       </div>
     </div>
   )

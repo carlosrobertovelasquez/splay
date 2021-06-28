@@ -61,7 +61,8 @@ export default function index(props) {
           .getDownloadURL()
           .then((url) => {
             setPicureUrl(url)
-            //guardamos en publication de firebase
+            // guardamos en publication de firebase
+
             firebase
               .firestore()
               .collection("Publication")
@@ -72,6 +73,22 @@ export default function index(props) {
                 state: "t",
                 typeFile: fileUpload.type,
                 dateCreate: firebase.firestore.Timestamp.fromDate(new Date()),
+                likes: [
+                  {
+                    userId: "",
+                    dateCreate: firebase.firestore.Timestamp.fromDate(
+                      new Date()
+                    ),
+                  },
+                ],
+                commentUsers: [
+                  {
+                    userId: "",
+                    dateCreate: firebase.firestore.Timestamp.fromDate(
+                      new Date()
+                    ),
+                  },
+                ],
               })
           })
         setUploadValue(100)

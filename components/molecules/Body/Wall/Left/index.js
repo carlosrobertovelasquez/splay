@@ -1,7 +1,9 @@
 import React from "react"
 import Link from "next/link"
 import { useAuth } from "../../../../../lib/auth"
-export default function index() {
+export default function index({ datos }) {
+  const countFollowing = datos[0].following.length - 1
+  const countFollowers = datos[0].followers.length - 1
   const { signout } = useAuth()
   return (
     <React.Fragment>
@@ -18,7 +20,23 @@ export default function index() {
                   paddingRight: "10px",
                 }}
               />{" "}
-              Mis Amigossss
+              Seguidores {countFollowing}
+            </a>
+          </Link>
+        </div>
+        <div className="col-span-4 py-3">
+          <Link href="">
+            <a>
+              <img
+                src="/icons/Iconos-Muro-General/my-friends.png"
+                style={{
+                  width: "60px",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  paddingRight: "10px",
+                }}
+              />{" "}
+              Seguidos {countFollowers}
             </a>
           </Link>
         </div>
@@ -108,7 +126,7 @@ export default function index() {
         <div className="col-span-4 py-3">
           <button onClick={() => signout()}>
             <img
-              src="/icons/Iconos-Muro-General/recent-activity.png"
+              src="/icons/exit.png"
               style={{
                 width: "60px",
                 display: "inline-block",

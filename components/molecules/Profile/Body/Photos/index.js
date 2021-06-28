@@ -19,6 +19,7 @@ export default function index({ userData }) {
 
   if (dataPublication === undefined) return null
 
+  console.log("Desde Fotos", dataPublication)
   const datos = dataPublication
     .slice(-11)
     .sort((a, b) => a.dateCreate - b.dateCreate)
@@ -26,7 +27,7 @@ export default function index({ userData }) {
       (e) => (e.idUser === userData[0].userid) & (e.typeFile === "imagen")
     )
   return (
-    <div className="mt-4 boxWidget">
+    <div className="mt-4 boxWidgetLeft">
       <div className="grid grid-cols-2 gap-4">
         <div>
           <h2

@@ -3,10 +3,13 @@ import iconBird from "../../../public/icons/bird.png"
 import iconHome from "../../../public/icons/home.png"
 import icon1 from "../../../public/icons/icon1.png"
 import Logo from "../../../public/Logo02.png"
+import Exit from "../../../public/icons/exit.png"
+
 import Link from "next/link"
 import { useAuth } from "../../../lib/auth"
 export default function index() {
   const { user } = useAuth()
+  const { signout } = useAuth()
   return (
     <>
       <nav
@@ -61,9 +64,17 @@ export default function index() {
           <div>
             <a
               href="#"
-              className="inline-block text-sm px-4 leading-none mt-4 lg:mt-0"
+              className="inline-block text-sm px-2 leading-none mt-4 lg:mt-0"
             >
               <img style={{ width: "80px" }} src={iconBird} />
+            </a>
+          </div>
+          <div onClick={() => signout()}>
+            <a
+              href="#"
+              className="inline-block text-sm   leading-none mt-4 lg:mt-0"
+            >
+              <img style={{ width: "50px" }} src={Exit} />
             </a>
           </div>
         </div>

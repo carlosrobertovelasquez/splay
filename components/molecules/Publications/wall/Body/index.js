@@ -4,6 +4,7 @@ import Counts from "../Comments/Counts"
 import Avatar from "../../../../atoms/Avatar/Small"
 import ReactPlayer from "react-player"
 import Skeleton from "react-loading-skeleton"
+import Like from "../../../../atoms/Like"
 export default function index({
   comments,
   dateCreate,
@@ -11,6 +12,7 @@ export default function index({
   idUser,
   typeFile,
   id,
+  likes,
 }) {
   const [isPlaying, setIsPlaying] = useState(false)
   const playMovie = () => {
@@ -67,7 +69,7 @@ export default function index({
               </div>
             )}
 
-            <Counts publicactionId={id} />
+            <Counts publicactionId={id} likes={likes} />
             <div
               className="col-span-12 mb-5"
               style={{
@@ -95,15 +97,7 @@ export default function index({
                     Guardar
                   </button>
                 </div>
-                <div className="text-center">
-                  <button>
-                    <img
-                      src="/icons/like.png"
-                      style={{ width: "20px", display: "inline-block" }}
-                    />{" "}
-                    Me gusta
-                  </button>
-                </div>
+                <Like likes={likes} docId={id} />
               </div>
             </div>
 

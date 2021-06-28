@@ -11,7 +11,7 @@ export default function index(props) {
   return (
     <>
       <section>
-        <div className="md:container2 mx-auto">
+        <div className="container2 mx-auto">
           <div className="grid grid-cols-5 gap-4 profileOptions">
             <div className=" hidden    md:col-span-2 navbar md:block ">
               <Information userData={userData} profile={profile} />

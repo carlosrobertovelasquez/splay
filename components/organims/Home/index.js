@@ -10,7 +10,6 @@ import { listenLatesUsers } from "../../../lib/db"
 export default function index(props) {
   const { user } = props
   const { profile } = props
-
   const [dataComentarios, setDataComentarios] = useState(undefined)
 
   useEffect(() => {
@@ -38,7 +37,7 @@ export default function index(props) {
       <section className="movil">
         <div className="mx-auto">
           <div className="grid grid-cols-5 ">
-            <Left />
+            <Left datos={datos} />
             <div className="col-span-7 md:col-span-3  md:mx-20 profileAlias">
               <Center
                 avatar={datos[0].avatar}

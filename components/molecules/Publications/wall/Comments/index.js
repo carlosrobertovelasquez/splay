@@ -94,7 +94,7 @@ export default function index({ commentId }) {
                 <div className="text-center">
                   <button onClick={send}>
                     <img
-                      src="/icons/like.png"
+                      src="/icons/send.png"
                       style={{ width: "20px", display: "inline-block" }}
                     />{" "}
                     Enviar
@@ -108,3 +108,5 @@ export default function index({ commentId }) {
     </React.Fragment>
   )
 }
+
+// src="/icons/like.png"

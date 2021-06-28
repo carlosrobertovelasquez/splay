@@ -6,7 +6,7 @@ export default function index(props) {
   const fecha = userData[0].dateCreate
   const fechaIngreso = Intl.DateTimeFormat().format(new Date(fecha)) // 08/04/2021
   return (
-    <div className="boxWidgetLeft">
+    <div className="boxWidget">
       <h2
         className="mb-4"
         style={{ fontSize: "2.1rem", fontWeight: "bold", color: "#58595B" }}

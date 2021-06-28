@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { listenLatesComentarios } from "../../../../../../lib/db"
 import Like from "./Like"
-export default function index({ publicactionId }) {
+export default function index({ publicactionId, likes }) {
   //  const [comentarios, setComentarios] = useState("")
-
   const [dataComentarios, setDataComentarios] = useState(undefined)
   useEffect(() => {
     let unsubscribe
@@ -37,7 +36,7 @@ export default function index({ publicactionId }) {
           <div className="col-span-4">
             <p style={{ fontSize: "0.8rem" }}>0 guardado</p>
           </div>
-          <Like publicationId={publicactionId} />
+          <Like publicationId={publicactionId} likes={likes} />
         </div>
       </div>
     </React.Fragment>

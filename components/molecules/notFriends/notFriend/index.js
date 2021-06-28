@@ -74,7 +74,7 @@ export default function index({
               padding: "2px initial",
             }}
           >
-            <span style={{ marginRight: "5px" }}>+</span> Agregar
+            <span style={{ marginRight: "5px" }}>+</span> Seguir
           </button>
         </p>
       </div>
