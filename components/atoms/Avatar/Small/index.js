@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { getUserByUserId } from "../../../../lib/db"
 import useTimeAgo from "../../../../hooks/useTimeAgo"
+import Link from "next/link"
 export default function index({ idUser, alt, dateCreate }) {
   const timego = useTimeAgo(dateCreate)
 
@@ -23,18 +24,23 @@ export default function index({ idUser, alt, dateCreate }) {
           className="text-left"
           style={{ fontSize: "1.8rem", fontWeight: "bold" }}
         >
-          <img
-            src={dataUser.avatar}
-            alt={alt}
-            style={{
-              display: "inline-block",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-            }}
-          />
+          <Link href="/F/[id]" as={`/F/${idUser}`}>
+            <a>
+              <img
+                src={dataUser.avatar}
+                alt={alt}
+                style={{
+                  display: "inline-block",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                }}
+              />
+            </a>
+          </Link>
         </p>
       </div>
+
       <div className="col-span-9 md:col-span-10">
         <p
           className=""

@@ -63,7 +63,6 @@ export default function index({ datos }) {
     const fila = document.querySelector(".contenedor")
     fila.scrollLeft -= fila.offsetWidth
   }
-  console.log(notFriend)
   return (
     <React.Fragment>
       {notFriend === null || notFriend.length === 0 ? (

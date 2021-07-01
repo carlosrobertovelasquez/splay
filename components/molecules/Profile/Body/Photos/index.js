@@ -19,7 +19,6 @@ export default function index({ userData }) {
 
   if (dataPublication === undefined) return null
 
-  console.log("Desde Fotos", dataPublication)
   const datos = dataPublication
     .slice(-11)
     .sort((a, b) => a.dateCreate - b.dateCreate)

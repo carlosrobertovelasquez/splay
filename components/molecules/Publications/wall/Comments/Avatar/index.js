@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { getUserByUserId } from "../../../../../../lib/db"
+import Link from "next/link"
 export default function index({ idUser }) {
   const [dataUser, setDataUser] = useState(undefined)
   useEffect(() => {
@@ -14,15 +15,19 @@ export default function index({ idUser }) {
   if (dataUser === undefined) return null
   return (
     <React.Fragment>
-      <img
-        src={dataUser.avatar}
-        style={{
-          display: "inline-block",
-          borderRadius: "50%",
-          width: "30px",
-          height: "30px",
-        }}
-      />
+      <Link href="/F/[id]" as={`/F/${idUser}`}>
+        <a>
+          <img
+            src={dataUser.avatar}
+            style={{
+              display: "inline-block",
+              borderRadius: "50%",
+              width: "30px",
+              height: "30px",
+            }}
+          />
+        </a>
+      </Link>
     </React.Fragment>
   )
 }

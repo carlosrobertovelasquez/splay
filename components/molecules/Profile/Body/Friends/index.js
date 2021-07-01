@@ -23,7 +23,7 @@ export default function index(props) {
     return data
   })
 
-  const countFollowing = dataFollowing.length - 1
+  const countFollowing = dataFollowing.length
 
   return (
     <div className="mt-4 boxWidgetLeft">

@@ -91,10 +91,10 @@ export default function index({
                 <div className="text-center">
                   <button>
                     <img
-                      src="/icons/icon6.png"
+                      src="/icons/icon7.png"
                       style={{ width: "20px", display: "inline-block" }}
                     />{" "}
-                    Guardar
+                    Compartir
                   </button>
                 </div>
                 <Like likes={likes} docId={id} />

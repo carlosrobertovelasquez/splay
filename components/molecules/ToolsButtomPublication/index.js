@@ -23,7 +23,7 @@ export default function index({ publicationId }) {
     (e) => e.idUser === user.uid,
     (e) => e.idPublicayion === publicationId
   )
-  console.log("barra de botonose")
+
   return (
     <div className="grid grid-cols-3">
       <Button src={"/icons/icon6.png"} text={"Guardar"} />

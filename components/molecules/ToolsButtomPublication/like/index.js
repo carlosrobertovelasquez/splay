@@ -3,7 +3,6 @@ import Button from "../../../atoms/Button"
 import firebase from "../../../../lib/firebase"
 
 export default function index({ datos }) {
-  console.log("estamos en likes")
   const Like = async () => {
     if (docid === undefined) {
       // Adicionamos el likes

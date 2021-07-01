@@ -20,9 +20,8 @@ export default function index(props) {
 
   if (dataComentarios === undefined) return null
   const datos = dataComentarios
-    .slice()
-    .sort((a, b) => a.createAt - b.createAt)
     .filter((e) => e.userid === userId)
+    .sort((a, b) => a.createAt - b.createAt)
 
   if (datos === undefined) return null
   return (

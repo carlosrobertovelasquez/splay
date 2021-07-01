@@ -10,6 +10,7 @@ import { useAuth } from "../../../lib/auth"
 export default function index() {
   const { user } = useAuth()
   const { signout } = useAuth()
+  if (user === null) return null
   return (
     <>
       <nav

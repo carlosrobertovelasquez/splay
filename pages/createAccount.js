@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react"
-import Head from "next/head"
+import React, { useState } from "react"
+// import Head from "next/head"
 
-import { useAuth } from "../lib/auth"
-import { doesUsernameExist, createFriends } from "../lib/db"
+// import { useAuth } from "../lib/auth"
+import { doesUsernameExist } from "../lib/db"
 import Link from "next/link"
 import Quetzal2 from "../public/Quetzal.jpeg"
 import firebase from "../lib/firebase"
 import { Router, useRouter } from "next/router"
 export default function createAccount() {
-  const { user, signout } = useAuth()
+  //  const { user, signout } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [nombre, setNombre] = useState("")
   const [apellido, setApellido] = useState("")
   const [sexo, setSexo] = useState("")
-  const [dia, setDia] = useState("")
-  const [mes, setMes] = useState("")
-  const [ano, setAno] = useState("")
+  const [dia, setDia] = useState("00")
+  const [mes, setMes] = useState("00")
+  const [ano, setAno] = useState("00")
 
   const isInvalid =
     email === "" ||
@@ -28,6 +28,7 @@ export default function createAccount() {
     mes === "00" ||
     ano === "00" ||
     sexo === ""
+
   /*
   useEffect(() => {
     let unsubscribe
@@ -37,12 +38,11 @@ export default function createAccount() {
     return () => unsubscribe && unsubscribe()
   }, [user])
 */
-  const router = useRouter()
-  console.log(router.query)
+  // const router = useRouter()
   const handleLogin = async (event) => {
     event.preventDefault()
+    console.log("validar campos", isInvalid)
     const usernameExists = await doesUsernameExist(email)
-    // console.log(usernameExists)
     if (!usernameExists.length) {
       try {
         const createdUserResult = await firebase
@@ -52,30 +52,37 @@ export default function createAccount() {
         createdUserResult.user.updateProfile({
           displayName: nombre,
         })
-        await firebase.firestore().collection("users").add({
-          userid: createdUserResult.user.uid,
-          firstName: nombre,
-          lastName: apellido,
-          email: email.toLowerCase(),
-          gender: sexo.toUpperCase(),
-          birthdayDay: dia,
-          birthdayMonth: mes,
-          birthdayYear: ano,
-          avatar:
-            "https://firebasestorage.googleapis.com/v0/b/splay7-8f0b9.appspot.com/o/Avatar%2Fbcac4514-387c-48d4-afa4-23cc459244a2.jpeg?alt=media&token=634a3d34-79fb-419f-85d1-df17d0ddd9cb",
-          profilePhoto:
-            "https://firebasestorage.googleapis.com/v0/b/splay7-8f0b9.appspot.com/o/Portada%2Fcd791fbf-cd54-402b-8d35-022b4c3091fc.png?alt=media&token=a97a1823-fb26-4e35-89c6-b17b8eb2acc8",
-          trabajaEn: "ND",
-          estadoCivil: "ND",
-          occupation: "ND",
-          estado: "T",
-          dateCreate: Date.now(),
-        })
+        await firebase
+          .firestore()
+          .collection("users")
+          .add({
+            userid: createdUserResult.user.uid,
+            firstName: nombre,
+            lastName: apellido,
+            email: email.toLowerCase(),
+            gender: sexo.toUpperCase(),
+            birthdayDay: dia,
+            birthdayMonth: mes,
+            birthdayYear: ano,
+            avatar:
+              "https://firebasestorage.googleapis.com/v0/b/splay7-8f0b9.appspot.com/o/Avatar%2Fbcac4514-387c-48d4-afa4-23cc459244a2.jpeg?alt=media&token=634a3d34-79fb-419f-85d1-df17d0ddd9cb",
+            profilePhoto:
+              "https://firebasestorage.googleapis.com/v0/b/splay7-8f0b9.appspot.com/o/Portada%2Fcd791fbf-cd54-402b-8d35-022b4c3091fc.png?alt=media&token=a97a1823-fb26-4e35-89c6-b17b8eb2acc8",
+            trabajaEn: "ND",
+            estadoCivil: "ND",
+            occupation: "ND",
+            estado: "T",
+            dateCreate: Date.now(),
+            followers: ["Kk7XZpwe3MbBOzLT3eBe1I56C293"],
+            following: ["Kk7XZpwe3MbBOzLT3eBe1I56C293"],
+          })
         // Pendiente de cambiar el id de Splay oficial
+        /*
         await createFriends(
           "klYYiY1LIzVSd6NinFog5jiplXF3",
           createdUserResult.user.uid
         )
+        */
         //   signout()
         Router.push("/")
       } catch (error) {
@@ -83,9 +90,9 @@ export default function createAccount() {
         setApellido("")
         setEmail("")
         setPassword("")
-        setDia("")
-        setMes("")
-        setAno("")
+        setDia("00")
+        setMes("00")
+        setAno("00")
         setSexo("")
         setError(error.message)
       }

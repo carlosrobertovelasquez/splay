@@ -1,15 +1,17 @@
 import React from "react"
 import Link from "next/link"
+
 import { useAuth } from "../../../../../lib/auth"
 export default function index({ datos }) {
-  const countFollowing = datos[0].following.length - 1
-  const countFollowers = datos[0].followers.length - 1
+  const countFollowing = datos[0].following.length
+  const countFollowers = datos[0].followers.length
   const { signout } = useAuth()
+  const { user } = useAuth()
   return (
     <React.Fragment>
       <div className="hidden md:flex flex-col ml-8  ">
         <div className="col-span-4 py-3">
-          <Link href="">
+          <Link href="friend/[friends]" as={`/friend/${user.uid}`}>
             <a>
               <img
                 src="/icons/Iconos-Muro-General/my-friends.png"
@@ -74,7 +76,7 @@ export default function index({ datos }) {
         </div>
 
         <div className="col-span-4 py-3">
-          <Link href="">
+          <Link href="plan/[id]" as={`/plan/${user.uid}`}>
             <a>
               <img
                 src="/icons/Iconos-Muro-General/histories.png"
@@ -85,7 +87,7 @@ export default function index({ datos }) {
                   paddingRight: "10px",
                 }}
               />{" "}
-              Historias
+              Membresia
             </a>
           </Link>
         </div>
@@ -119,7 +121,7 @@ export default function index({ datos }) {
                   paddingRight: "10px",
                 }}
               />{" "}
-              Actividad reciente
+              Plan de Inversion
             </a>
           </Link>
         </div>
