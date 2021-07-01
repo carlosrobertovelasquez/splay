@@ -86,3 +86,34 @@
   );
   font-weight: bold;
 }
+
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 1px;
+  top: 15px;
+}
+.bm-burger-bars {
+  background: #00a59b;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+.bm-cross {
+  background: #bdc3c7;
+}
+.bm-menu {
+  background: #d5eceb;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+.bm-item-list {
+  padding: 0.8em;
+}
+.bm-item {
+  display: block;
+  color: #bdc3c7;
+}
