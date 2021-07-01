@@ -26,7 +26,7 @@ export default function index(props) {
   if (datos === undefined) return null
   return (
     <>
-      <NavBar userId={datos} profile={profile} />
+      <NavBar datos={datos} profile={profile} />
       <Header userId={datos} profile={profile} />
       <Body userData={datos} profile={profile} />
     </>

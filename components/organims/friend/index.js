@@ -23,7 +23,7 @@ export default function index() {
   const datos = dataUser.filter((e) => e.userid === user.uid)
   return (
     <>
-      <Navbar />
+      <Navbar datos={datos} />
       <div id="container" className=" w-4/5 mx-auto">
         <div className="flex  flex-wrap sm:flex-row">
           {datos[0].following

@@ -11,7 +11,7 @@ export default function plan() {
       <Head>
         <title>Splay7 Planes</title>
       </Head>
-      <Friend userId={userId} />
+      <Friend datos={userId} />
     </>
   )
 }

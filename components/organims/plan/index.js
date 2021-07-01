@@ -1,8 +1,27 @@
 import Head from "next/head"
-import React from "react"
-// import { useAuth } from "../../../lib/auth"
+import React, { useState, useEffect } from "react"
+import { useAuth } from "../../../lib/auth"
+import { listenLatesUsers } from "../../../lib/db"
 import Navbar from "../../molecules/Navbar"
 export default function index() {
+  const { user } = useAuth()
+
+  const [dataUser, setDataUser] = useState(undefined)
+
+  useEffect(() => {
+    let unsubscribe
+    if (user) {
+      unsubscribe = listenLatesUsers((newUsers) => {
+        setDataUser(newUsers)
+      })
+      return () => unsubscribe && unsubscribe()
+    }
+  }, [user])
+
+  if (dataUser === undefined) return null
+
+  const datos = dataUser.filter((e) => e.userid === user.uid)
+
   return (
     <>
       <Head>
@@ -13,7 +32,7 @@ export default function index() {
         />
         <title>Plan de Compensación</title>
       </Head>
-      <Navbar />
+      <Navbar datos={datos} />
       <div className="font-sans bg-indio-primary">
         <div className="min-h-screen flex justify-center items-center">
           <div className=" pt-0">
