@@ -117,3 +117,39 @@
   display: block;
   color: #bdc3c7;
 }
+
+.coverContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.changeCoverButton {
+  position: absolute;
+  background: #58595b;
+  color: #fff;
+  padding: 5px 10px;
+  left: 30px;
+  bottom: 30px;
+  border-radius: 5px;
+}
+
+.coverImage {
+  z-index: -1;
+  height: 280px;
+  width: 100%;
+  border-radius: 0px 0px 30px 30px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .coverImage {
+    height: 150px;
+  }
+  .changeCoverButton { 
+    left: 20px;
+    bottom: 20px;
+  }
+}
