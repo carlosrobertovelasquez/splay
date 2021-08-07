@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid"
 import firebase from "../../../../lib/firebase"
 import { updatePhotoProfile, deletePhotoProfile } from "../../../../lib/db"
 import Header02 from "./Header02"
+
 const storage = firebase.storage()
 
 export default function index({ userId, profile }) {
@@ -85,27 +86,12 @@ export default function index({ userId, profile }) {
         style={{ background: "#d5eceb", padding: "5px 0px 15px 0px" }}
       >
         <div className="container mx-auto">
-          <div className="imagenPortada" style={{ height: "320px" }}>
-            <div
-              style={{
-                backgroundImage: `url("${userId[0].profilePhoto}")`,
-                height: "280px",
-                borderRadius: "0px 0px 30px 30px",
-                backgroundRepeat: "no-repeat",
-              }}
-            >
+          <div className="coverContainer">
+              <img className="coverImage" src={userId[0].profilePhoto} alt="Imagen portada" />
               {profile === "W" ? (
                 <button
                   onClick={Toggle}
-                  style={{
-                    position: "relative",
-                    top: "230px",
-                    background: "#58595B",
-                    color: "#fff",
-                    padding: "5px 10px",
-                    left: "20px",
-                    borderRadius: "5px",
-                  }}
+                  className="changeCoverButton"
                 >
                   Actualizar Portada
                   <img
@@ -178,7 +164,6 @@ export default function index({ userId, profile }) {
                   </button>
                 </div>
               )}
-            </div>
           </div>
           <div className="grid grid-cols-4 gap-4 profileOptions"></div>
 
