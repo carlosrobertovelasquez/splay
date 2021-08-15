@@ -1,10 +1,43 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import useTimeAgo from "../../../../../../hooks/useTimeAgo"
-import { getUserByUserId } from "../../../../../../lib/db"
+import { getUserByUserId, deleteComment } from "../../../../../../lib/db"
 import Avatar from "../Avatar"
-export default function index({ comment, createAt, idUser }) {
+
+let useClickOutside = (handler) => {
+  let domNode = useRef()
+
+  useEffect(() => {
+    let maybeHandler = (event) => {
+      if (!domNode.current.contains(event.target)) {
+        handler()
+      }
+    }
+
+    document.addEventListener("mousedown", maybeHandler)
+
+    return () => {
+      document.removeEventListener("mousedown", maybeHandler)
+    }
+  })
+
+  return domNode
+}
+
+export default function index({
+  comment,
+  createAt,
+  idUser,
+  commentId,
+  currentUserId,
+}) {
   const fecha = useTimeAgo(createAt)
   const [dataUser, setDataUser] = useState(undefined)
+  const [isCommentMenuOpen, setIsCommentMenuOpen] = useState(false)
+
+  let domNode = useClickOutside(() => {
+    setIsCommentMenuOpen(false)
+  })
+
   useEffect(() => {
     async function datosUser() {
       const [response] = await getUserByUserId(idUser)
@@ -23,7 +56,7 @@ export default function index({ comment, createAt, idUser }) {
           style={{ gridTemplateColumns: "repeat(16, minmax(0, 1fr))" }}
         >
           <div
-            className=" col-span-2 md:col-span-1 "
+            className="col-span-2 md:col-span-1 "
             style={{ marginLeft: "8px" }}
           >
             <p className="text-left ">
@@ -42,7 +75,38 @@ export default function index({ comment, createAt, idUser }) {
                 border: "1px solid #ccc",
               }}
             >
-              <p>{dataUser.firstName}</p>
+              <div ref={domNode} className="flex justify-between">
+                <p>{dataUser.firstName}</p>
+                {idUser === currentUserId && (
+                  <div style={{ position: "relative" }}>
+                    <img
+                      onClick={() => setIsCommentMenuOpen(!isCommentMenuOpen)}
+                      src="/icons/icon2.png"
+                      style={{ width: "20px", cursor: "pointer" }}
+                    />
+                    {isCommentMenuOpen && (
+                      <div
+                        style={{
+                          bottom: -45,
+                          right: 0,
+                          zIndex: 2,
+                          padding: "10px 15px",
+                          backgroundColor: "white",
+                          borderRadius: "5px",
+                          position: "absolute",
+                        }}
+                      >
+                        <p
+                          style={{ cursor: "pointer" }}
+                          onClick={() => deleteComment(commentId)}
+                        >
+                          Eliminar
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
               <p>{comment}</p>
             </div>
           </div>

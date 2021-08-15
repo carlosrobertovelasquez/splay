@@ -49,6 +49,8 @@ export default function index({ commentId }) {
             comment={publi.comment}
             createAt={publi.createAt}
             idUser={publi.idUser}
+            commentId={publi.id}
+            currentUserId={user.uid}
           />
         ))
         .reverse()}
@@ -86,6 +88,7 @@ export default function index({ commentId }) {
                     background: "unset",
                     fontSize: "0.8rem",
                     padding: 5,
+                    outline: "none",
                   }}
                   onChange={(e) => setComentarios(e.target.value)}
                   value={comentarios}
