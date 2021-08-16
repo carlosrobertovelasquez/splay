@@ -6,6 +6,7 @@ import ReactPlayer from "react-player"
 import Skeleton from "react-loading-skeleton"
 import Like from "../../../../atoms/Like"
 import { deletePost } from "../../../../../lib/db"
+import { useAuth } from "../../../../../lib/auth"
 
 let useClickOutside = (handler) => {
   let domNode = useRef()
@@ -38,6 +39,7 @@ export default function index({
 }) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isPostMenuOpen, setIsPostMenuOpen] = useState(false)
+  const { user } = useAuth()
 
   let domNode = useClickOutside(() => {
     setIsPostMenuOpen(false)
@@ -69,7 +71,7 @@ export default function index({
                 <button onClick={() => setIsPostMenuOpen(!isPostMenuOpen)}>
                   <img src="/icons/icon2.png" style={{ width: "30px" }} />
                 </button>
-                {isPostMenuOpen && (
+                {isPostMenuOpen && idUser === user.uid && idUser&& (
                   <div
                     style={{
                       bottom: -45,
