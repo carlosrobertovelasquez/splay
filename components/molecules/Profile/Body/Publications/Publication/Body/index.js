@@ -4,7 +4,7 @@ import Counts from "../Comments/Counts"
 import ReactPlayer from "react-player"
 import Avatar from "../../../../../../atoms/Avatar/Small"
 import ToolsButtonPublication from "../../../../../ToolsButtomPublication"
-
+import { useAuth } from "../../../../../../../lib/auth"
 import { deletePost } from "../../../../../../../lib/db"
 
 let useClickOutside = (handler) => {
@@ -37,6 +37,7 @@ export default function index({
 }) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isPostMenuOpen, setIsPostMenuOpen] = useState(false)
+  const { user } = useAuth()
 
   let domNode = useClickOutside(() => {
     setIsPostMenuOpen(false)
@@ -68,7 +69,7 @@ export default function index({
               <button onClick={()=> setIsPostMenuOpen(!isPostMenuOpen)}>
                 <img src="/icons/icon2.png" style={{ width: "30px" }} />
               </button>
-              {isPostMenuOpen && (
+              {isPostMenuOpen && idUser === user.uid && (
                 <div
                   style={{
                     bottom: -45,
