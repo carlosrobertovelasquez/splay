@@ -86,7 +86,7 @@ export default function index({ userId, profile }) {
         style={{ background: "#d5eceb", padding: "5px 0px 15px 0px" }}
       >
         <div className="container mx-auto">
-          <div className="coverContainer">
+          <div className="coverContainer" style={{ position: "relative" }}>
               <img className="coverImage" src={userId[0].profilePhoto} alt="Imagen portada" />
               {profile === "W" ? (
                 <button
@@ -108,12 +108,13 @@ export default function index({ userId, profile }) {
               {!loaddingForm && (
                 <div
                   style={{
-                    position: "relative",
-                    top: "231px",
+                    position: "absolute",
+                    zIndex: 3,
+                    bottom: "-29px",
                     background: "#58595B",
                     color: "#fff",
                     padding: "4px 0px",
-                    left: "20px",
+                    left: "30px",
                     borderRadius: "5px",
                     width: "300px",
                   }}
