@@ -27,14 +27,26 @@ export default function index({
     display: "inline-block",
     marginRight: "20px",
     paddingRight: "0px",
+    zIndex: '15',
   }
   const cardHistory = {
-    position: "relative",
+    /*
+    position: "relative"
     background: "#ddd",
-    borderRadius: "10px",
-    border: "1px solid #00A59B",
-    // marginRight: "1px",
-    // marginLeft: "1px",
+    borderRadius: "10px"
+    */
+    position: "relative",
+    width: '140px',
+    height: '220px',
+    /*border: "10px solid white",*/
+    marginLeft: '5px',
+    marginRight: '5px',
+    marginTop: '5px',
+    textAlign: "center",
+    /*lineHeight: "240px",*/
+    boxSizing: "border-box",
+    background: '#ddd',
+    borderRadius: '10px',
   }
 
   async function handleFollowUser() {
@@ -47,7 +59,7 @@ export default function index({
   }
   return !followed ? (
     <React.Fragment>
-      <div className="col-span-2 md:col-span-1 my-5  " style={cardHistory}>
+      <div className="col-span-2 md:col-span-1" style={cardHistory}>
         <img src={avatar} style={avatarOverCard} />
         <p className="p-4" style={{ textAlign: "center" }}>
           <img
@@ -60,11 +72,11 @@ export default function index({
             }}
           />
         </p>
-        <p className="px-4" style={{ fontSize: "0.9rem", fontWeight: "bold" }}>
+        <p className="px-4" style={{height:'43px', fontSize: "0.9rem", fontWeight: "bold" }}>
           {firstName} {lastName}
         </p>
 
-        <p className="text-center px-4 mt-2">
+        <p className="text-center px-2 mt-2">
           <button
             onClick={handleFollowUser}
             className="button2 mb-2"

@@ -8,10 +8,12 @@ export default function profile() {
   const profile = router.query.profile
   return (
     <>
+    {/*
       <Head>
         <title>Splay7 Wall</title>
       </Head>
       <Profile userId={userId} profile={profile} />
+    */}
     </>
   )
 }

@@ -3,7 +3,7 @@ import Link from "next/link"
 export default function index() {
   return (
     <React.Fragment>
-      <div className=" hidden md:flex flex-col">
+      <div className="col-span-7 md:col-span-2 profileMore px-4 text-left">
         <div
           className="col-span-4 py-5"
           style={{

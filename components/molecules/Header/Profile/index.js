@@ -83,7 +83,7 @@ export default function index({ userId, profile }) {
     <>
       <section
         className="mb-4"
-        style={{ background: "#d5eceb", padding: "5px 0px 15px 0px" }}
+        style={{background: '#fbf4f4', padding: '30px 15px 0px'}}
       >
         <div className="container mx-auto">
           <div className="coverContainer" style={{ position: "relative" }}>

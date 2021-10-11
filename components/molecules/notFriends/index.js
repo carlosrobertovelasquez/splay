@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { getSuggestedProfile } from "../../../lib/db"
 import NotFriend from "./notFriend"
+import Carousel from "react-simply-carousel";
 export default function index({ datos }) {
   const [notFriend, setNotFriend] = useState(null)
   const { userid, following, id } = datos[0]
+  const [ activeSlide, setActiveSlide] = useState(0);
   useEffect(() => {
     async function suggestedProfiles() {
       const response = await getSuggestedProfile(userid, following)
@@ -52,6 +54,7 @@ export default function index({ datos }) {
     cursor: "pointer",
     position: "relative",
     zIndex: "500",
+    
   }
 
   const derecha = () => {
@@ -83,7 +86,92 @@ export default function index({ datos }) {
           </div>
         </>
       ) : (
-        <>
+        <div style={{position: 'relative'}}>
+        <Carousel
+          updateOnItemClick
+          containerProps={{
+          style: {
+              /*width: "100%",
+              justifyContent: "space-between"*/
+          }
+          }}
+          activeSlideIndex={activeSlide}
+          activeSlideProps={{
+          style: {
+              background: "blue"
+          }
+          }}
+          onRequestChange={setActiveSlide}
+          forwardBtnProps={{
+          children: ">",
+          style: {
+              width: 50,
+              height: 50,
+              zIndex: 10,
+              alignSelf: "center",
+              position: 'relative',
+              right: 0,
+              zIndex: 10,
+              top: '40%',
+              position: 'absolute',
+              background: '#fbf4f4cc',
+              borderRadius: '50%',
+              color: '#fff',
+          }
+          }}
+          backwardBtnProps={{
+          children: "<",
+          style: {
+              width: 50,
+              height: 50,
+              zIndex: 10,
+              position: 'relative',
+              left: 0,
+              zIndex: 10,
+              top: '40%',
+              position: 'absolute',
+              background: '#fbf4f4cc',
+              borderRadius: '50%',
+              color: '#fff'
+          }
+          }}
+          itemsToShow={5}
+          speed={400}
+      >
+          {/*Array.from({ length: 10 }).map((item, index) => (
+          <div 
+              style={{
+              background: "red",
+              width: 150,
+              height: 300,
+              border: "10px solid white",
+              textAlign: "center",
+              lineHeight: "240px",
+              boxSizing: "border-box"
+              }}
+              key={index}
+          >
+              {index}
+          </div>
+          ))*/}
+          {notFriend
+          .map((notfriend) => (
+            <NotFriend
+              key={notfriend.userid}
+              firstName={notfriend.firstName}
+              lastName={notfriend.lastName}
+              avatar={notfriend.avatar}
+              profilePhoto={notfriend.profilePhoto}
+              friendId={notfriend.userid}
+              userid={userid}
+              docId={notfriend.docId}
+              id={id}
+            />
+          ))
+          .reverse()}
+
+      </Carousel>
+        {/*
           <div
             className="col-span-3 md:col-span-3 "
             style={contenedorPrincipal}
@@ -157,7 +245,8 @@ export default function index({ datos }) {
               </svg>
             </button>
           </div>
-        </>
+      */}
+        </div>
       )}
     </React.Fragment>
   )

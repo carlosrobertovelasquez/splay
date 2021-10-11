@@ -1,6 +1,28 @@
 import React from "react"
 import Link from "next/link"
 import { useAuth } from "../../../../lib/auth"
+import styled from 'styled-components';
+import { AiOutlineSave } from 'react-icons/ai';
+import { BiCodeAlt } from 'react-icons/bi';
+import { IoIosNotificationsOutline} from 'react-icons/io';
+import { GoReport } from 'react-icons/go';
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Button = styled.button`
+  min-width: 100px;
+  padding: 16px 32px;
+  border-radius: 4px;
+  border: none;
+  background: #141414;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+`;
 function left({ datos }) {
   const countFollowing = datos[0].following.length
   const countFollowers = datos[0].followers.length
@@ -9,7 +31,8 @@ function left({ datos }) {
 
   return (
     <>
-      <div className="col-span-4 py-3">
+    <div className="px-4 grid grid-cols-4 gap-4 text-left leftBar">
+      <div className="col-span-2 md:col-span-4 py-4">
         <Link href="friend/[friends]" as={`/friend/${user.uid}`}>
           <a>
             <img
@@ -25,23 +48,7 @@ function left({ datos }) {
           </a>
         </Link>
       </div>
-      <div className="col-span-4 py-3">
-        <Link href="">
-          <a>
-            <img
-              src="/icons/Iconos-Muro-General/my-friends.png"
-              style={{
-                width: "60px",
-                display: "inline-block",
-                marginRight: "20px",
-                paddingRight: "10px",
-              }}
-            />{" "}
-            Seguidos {countFollowers}
-          </a>
-        </Link>
-      </div>
-      <div className="col-span-4 py-3">
+      <div className="col-span-2 md:col-span-4 py-3">
         <Link href="">
           <a>
             <img
@@ -57,7 +64,7 @@ function left({ datos }) {
           </a>
         </Link>
       </div>
-      <div className="col-span-4 py-3">
+      <div className="col-span-2 md:col-span-4 py-3">
         <Link href="">
           <a>
             <img
@@ -74,7 +81,7 @@ function left({ datos }) {
         </Link>
       </div>
 
-      <div className="col-span-4 py-3">
+      <div className="col-span-2 md:col-span-4 py-3">
         <Link href="plan/[id]" as={`/plan/${user.uid}`}>
           <a>
             <img
@@ -91,7 +98,7 @@ function left({ datos }) {
         </Link>
       </div>
 
-      <div className="col-span-4 py-3">
+      <div className="col-span-2 md:col-span-4 py-3">
         <Link href="">
           <a>
             <img
@@ -108,7 +115,7 @@ function left({ datos }) {
         </Link>
       </div>
 
-      <div className="col-span-4 py-3">
+      <div className="col-span-2 md:col-span-4 py-3">
         <Link href="">
           <a>
             <img
@@ -124,7 +131,7 @@ function left({ datos }) {
           </a>
         </Link>
       </div>
-      <div className="col-span-4 py-3">
+      <div className="col-span-2 md:col-span-4 py-3">
         <button onClick={() => signout()}>
           <img
             src="/icons/exit.png"
@@ -137,6 +144,7 @@ function left({ datos }) {
           />{" "}
           Salir
         </button>
+      </div>
       </div>
     </>
   )

@@ -15,14 +15,9 @@ export default function index({ datos, profile }) {
           style={{ background: "#d5eceb", padding: "5px 0px 15px 0px" }}
         >
           <div className="mx-auto">
-            <div
-              className=" grid-cols-2  grid items-center  md:grid-cols-7 gap-6 profileOptions"
-              style={{ gap: "4rem" }}
-            >
+            <div className="grid items-center grid-cols-7 gap-6 profileOptions" style={{ gap: "4rem" }}>
               <div
-                className="col-span-2 md:col-span-2 profilePhoto"
-                style={{ textAlign: "center" }}
-              >
+                className="col-span-7 md:col-span-2 profilePhoto" style={{ textAlign: "center" }}>
                 <div className="grid grid-cols-3 ">
                   <Link href="/W/[id]" as={`/W/${datos[0].userid}`}>
                     <a>
@@ -102,7 +97,9 @@ export default function index({ datos, profile }) {
                   </div>
                 </div>
               </div>
-              <NotFriends datos={datos} />
+              <div className="col-span-7 md:col-span-3  profileAlias">
+                <NotFriends datos={datos} />
+              </div>
               <div className="  md:col-span-2  text-left">
                 <div className=" hidden md:grid grid-cols-4 items-center ml-4 pl-4">
                   <div className="col-span-1 text-right px-4">
