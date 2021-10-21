@@ -37,7 +37,7 @@ export default function index(props) {
   if (datos === undefined) return null
   return (
     <>
-      <Navbar opt="2" datos={datos} />
+      <Navbar opt="2" datos={datos}   />
       <Header datos={datos} profile={profile} />
 
       <section className="movil">
