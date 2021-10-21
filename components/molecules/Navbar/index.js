@@ -60,6 +60,7 @@ export default function index({ datos }) {
   const [input, setInput] = useState("");
   const [fueradeUl, setFueradeUl] = useState(true);
   const [showModal, setShowModal] = useState(false)
+  const [resultado, setResultado] = useState(null)
   const router = useRouter();
 
   useEffect(() => {
@@ -275,10 +276,10 @@ export default function index({ datos }) {
           <div onClick={()=>notificaciones()}>
             <span
               
-              className="inline-block text-sm px-2 leading-none mt-4 lg:mt-0"
+              className="inline-block relative text-sm px-2 leading-none mt-4 lg:mt-0"
             >
               <img className="countImagen" src={iconBird} />
-              
+              <span className="countNotificaciones" >{resultado}</span>
             </span>
           </div>
           <div onClick={() => signout()}>
@@ -294,6 +295,7 @@ export default function index({ datos }) {
         show={showModal}
         setShowModal={setShowModal}
         datos={datos}
+        setResultado={setResultado}
       />
       </nav>
     </>

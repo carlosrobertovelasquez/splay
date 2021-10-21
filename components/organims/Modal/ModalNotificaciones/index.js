@@ -6,7 +6,7 @@ const index = (props) => {
 	const { userid, following } = props.datos[0];
 
 	const { show, setShowModal } = props;
-
+	const { setResultado } = props;
 	useEffect(
 		() => {
 			let unsubscribe;
@@ -41,7 +41,7 @@ const index = (props) => {
 			}
 		}
 	});
-
+	setResultado(datos.length);
 	return (
 		<React.Fragment>
 			{show ? (

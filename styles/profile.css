@@ -151,7 +151,7 @@
   z-index:2;
   top: 75px;
   background: #B2DFDD;
-   overflow: auto;
+  
  
 
 }
@@ -170,16 +170,20 @@
 .contenedor-item:hover{
   background: #d5eceb !important;
   cursor: pointer;
+ 
 }
 .countImagen{
-  height: 60px;
- 
-  z-index: -1;
+  height: 50px;
   cursor: pointer;
 }
 .countNotificaciones{
   color: #fff;
-  
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: 55%;
+  left: 27%;
+  transform: translate(-50%,-50%);
  
 
 }
