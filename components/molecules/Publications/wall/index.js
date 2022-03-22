@@ -1,19 +1,52 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef, useCallback } from "react"
 import { listenLatesPublications } from "../../../../lib/db"
-
 import Body from "./Body"
-export default function index({ userId, following }) {
-  const [dataPublication, setDataPublication] = useState(undefined)
-  const [posts, setPosts] = useState([]);
-  const [page, setPage] = useState(1); 
+// ya casi lo tengo, todo lo puedo en Cristo que me fortalece, Bendito sea el nombre del SEÑOR
+import useFetch from "./hooks/useFetch";
+export default function index({ userId, following, createObserver }) {
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+  const { loading, error, list, posts } = useFetch(query, page);
+  const loader = useRef(null);
 
+
+  const [dataPublication, setDataPublication] = useState(undefined)
+  //const [posts, setPosts] = useState([]);
+  const limite = useRef(null);
+  
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  /**
+   * const handleObserver = useCallback((entries) => {
+   * 
+   * }, []);
+   */
+  const handleObserver = useCallback((entries) => {
+    const target = entries[0];
+    if (target.isIntersecting) {
+      setPage((prev) => prev + 1);
+      //console.log("Scrolling mouse");
+      //alert(page);
+      //alert();
+    }
+    //console.log(page);
+  }, []);
+  
   useEffect(() => {
-    let unsubscribe
+    
+    let unsubscribe;
+    const option = {
+      root: null,
+      rootMargin: "5px",
+      threshold: 1
+    };
+    const observer = new IntersectionObserver(handleObserver, option);
+    if (loader.current) observer.observe(loader.current);
+    /*
     if (userId) {
-      //const notInclude = ['1pBRHrysz5IdDZJ4rgSK','406kjj4kAw0t7MdVmcZm','5JJ3FNUy8ugAYH2ImEv0','5UDVF5DTA0LBpiYVveJk'];
-      /*unsubscribe = listenLatesPublications((newPiblications) => {
-        setDataPublication(newPiblications)
-      })*/
+      
       unsubscribe = listenLatesPublications((newPublications) => {
         setDataPublication(newPublications)
         console.log(newPublications);
@@ -23,15 +56,25 @@ export default function index({ userId, following }) {
         {
           firstsPosts.push(newPublications[a]);
         }
-        //console.log(firstsPosts);
+        
         setPosts(firstsPosts);
       })
       
+      
+
+      //createObserver(limite.current);
+      
+      
+        
+      
       return () => unsubscribe && unsubscribe()
     }
-  }, [userId])
+    */
+   
+  }, [handleObserver, userId]);
+  //}, [userId])
 
-  if (dataPublication === undefined) return null
+  //if (dataPublication === undefined) return null
   
   const userExits = (arry) => {
     const resul = arry.includes(userId)
@@ -44,6 +87,7 @@ export default function index({ userId, following }) {
   userExits(following)
 
   const datos = []
+  /*
   dataPublication.forEach(function (task) {
     for (let index = 0; index < following.length; index++) {
       // para que solo muestre las publicaciones del usuario entonces filtra
@@ -54,104 +98,32 @@ export default function index({ userId, following }) {
     }
     datos.push(task)
   })
-  const mas = () => {
-    setPage(()=> page + 1);
-  }
-  const more = useCallback => (()=> {
-    let lastPostShowed = (page + 1) * 10;
-    setPage((prev)=> prev + 1);
-    const lastPostToShow = (lastPostShowed <= posts.length) ? ((page * 10) - 1): (posts.length - 1);
-    console.log(lastPostToShow);
-    console.log("aqui dentro");
-  }, [page])
+  */
+ 
   return (
     <React.Fragment>
-      {
-        
-      posts
-        .map((publi) => (
-          <Body
-            key={publi.id}
-            comments={publi.comments}
-            dateCreate={publi.dateCreate}
-            file={publi.file}
-            idUser={publi.idUser}
-            typeFile={publi.typeFile}
-            id={publi.id}
-            likes={publi.likes}
-          />
-        ))
-        .reverse()}
-        
-
-        {
-        /*datos
-        .sort((a, b) => a.dateCreate - b.dateCreate)
-        .map((publi) => (
-          <Body
-            key={publi.id}
-            comments={publi.comments}
-            dateCreate={publi.dateCreate}
-            file={publi.file}
-            idUser={publi.idUser}
-            typeFile={publi.typeFile}
-            id={publi.id}
-            likes={publi.likes}
-          />
-        ))
-        .reverse()*/
-        }
-      <button style={{ marginBottom: '100px' }} onClick={mas}>
-        more images
-      </button>
-    
-    </React.Fragment>
-  )
-}
-
-function useFetch(query, page) {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [list, setList] = useState([]);
-  const [list2, setList2] = useState([]);
-
-  const sendQuery = useCallback(async () => {
-    try {
-      await setLoading(true);
-      await setError(false);
       
-      const res = await axios.get(
-        `https://openlibrary.org/search.json?q=${query}&page=${page}`
-        );
-        
-        await setList((prev) => [
-          ...new Set([...prev, ...res.data.docs.map((d) => d.title)])
-        ]);
-        
-        /*
-        llena de otros 10 elementos la lista
-        */
-       
-       console.log(`vamos por: ${page}`);
-      let inicioCount = (page - 1) * 10;
-      let finCount = ((page - 1) * 10) + 10;
-      let res2 = null;
-      for(let i = inicioCount; i < finCount; i++)
+      
       {
-        res2.push(i);
+        
+        posts.map((publi) => (
+          <Body
+            key={publi.id}
+            comments={publi.comments}
+            dateCreate={publi.dateCreate}
+            file={publi.file}
+            idUser={publi.idUser}
+            typeFile={publi.typeFile}
+            id={publi.id}
+            likes={publi.likes}
+          />
+        )).reverse()
+        
       }
-      await setList2((prev) => [
-        ...new Set([...prev, ...res2.map((r) => r)])
-      ]);
-      setLoading(false);
-    } catch (err) {
-      setError(err);
-    }
-  }, [query, page]);
-
-  useEffect(() => {
-    sendQuery(query);
-  }, [query, sendQuery, page]);
-
-  return { loading, error, list };
+      
+      {loading && <p>Loading...</p>}
+      {error && <p>Error!</p>}
+      <div ref={loader} />
+    </React.Fragment>
+  );
 }

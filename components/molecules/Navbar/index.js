@@ -11,6 +11,7 @@ import { useAuth } from "../../../lib/auth"
 import { searchAll } from '../../../lib/db'
 import styled from "styled-components"
 
+
 const Ul = styled.ul`
 position: absolute;
 z-index: 1000;
@@ -227,15 +228,15 @@ export default function index({ datos }) {
         <div className="pl-1 md:hidden">
           <BurgerMenu datos={datos} />
         </div>
-        <div className="flex justify-evenly">
+        <div className="flex justify-evenly" style={{ flexWrap: 'wrap' }}>
           <div>
-            <img className="fill-current ml-8" width="100" src={Logo}></img>
+            <Link href="/"><a><img className="fill-current ml-8" width="100" src={Logo}/></a></Link>
           </div>
 
-          <div className="pl-1">
+          <div className="pl-1 divbuscador">
             <input
               type="text"
-              className="px-2 w-40 h-10 md:w-96 "
+              className="px-2 w-40 h-10 md:w-96 buscador"
               style={{
                 borderRadius: "7px",
                 background: "#d5eceb",

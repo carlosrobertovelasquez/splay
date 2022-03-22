@@ -25,7 +25,7 @@ export default function index() {
                 height: "35px",
                 background: "#d5eceb",
               }}
-              placeholder="Buscar3"
+              placeholder="Buscar"
             />
           </div>
         </div>

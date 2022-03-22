@@ -1,6 +1,15 @@
-import React from "react"
+import React, { useEffect, useState, useRef, useCallback } from "react"
 import Link from "next/link"
+import { listenLatesFriends, listenLatesUsers }  from '../../../../../lib/db';
+
 export default function index() {
+  const [lastUsers, setLastUsers ] = useState([]);
+  useEffect(() => {
+    listenLatesUsers((newContact) => {
+      setLastUsers(newContact);
+      console.log(newContact);
+    });
+  },[]);
   return (
     <React.Fragment>
       <div className="col-span-7 md:col-span-2 profileMore px-4 text-left">
@@ -57,7 +66,7 @@ export default function index() {
                 display: "inline-block",
                 position: "absolute",
                 top: "3px",
-                left: "7px",
+                left: "7px"
               }}
             />
             <input
@@ -66,106 +75,35 @@ export default function index() {
                 padding: "5px 5px",
                 paddingLeft: "45px",
                 borderRadius: "10px",
-                width: "200px",
+                width: "100%"
+                
               }}
             />
           </div>
         </div>
-        <div className="col-span-4 m-3">
-          <img
-            src="/Quetzal.jpeg"
-            style={{
-              borderRadius: "50%",
-              width: "45px",
-              height: "45px",
-              display: "inline-block",
-              marginRight: "20px",
-              paddingRight: "0px",
-            }}
-          />{" "}
-          Melvin Antonio
-        </div>
-        <div className="col-span-4 m-3 ">
-          <img
-            src="/Quetzal.jpeg"
-            style={{
-              borderRadius: "50%",
-              width: "45px",
-              height: "45px",
-              display: "inline-block",
-              marginRight: "20px",
-              paddingRight: "0px",
-            }}
-          />{" "}
-          Juan Ramón
-        </div>
-        <div className="col-span-4 m-3">
-          <img
-            src="/Quetzal.jpeg"
-            style={{
-              borderRadius: "50%",
-              width: "45px",
-              height: "45px",
-              display: "inline-block",
-              marginRight: "20px",
-              paddingRight: "0px",
-            }}
-          />{" "}
-          Orlando Ceraz
-        </div>
-        <div className="col-span-4 m-3">
-          <img
-            src="/Quetzal.jpeg"
-            style={{
-              borderRadius: "50%",
-              width: "45px",
-              height: "45px",
-              display: "inline-block",
-              marginRight: "20px",
-              paddingRight: "0px",
-            }}
-          />{" "}
-          Melvin Antonio
-        </div>
-        <div className="col-span-4 m-3">
-          <img
-            src="/Quetzal.jpeg"
-            style={{
-              borderRadius: "50%",
-              width: "45px",
-              height: "45px",
-              display: "inline-block",
-              marginRight: "20px",
-              paddingRight: "0px",
-            }}
-          />{" "}
-          Elbert Martínez
-        </div>
-        <div className="col-span-4 m-5 ">
-          <img
-            src="/icons/Iconos-Muro-General/new-group.png"
-            style={{
-              width: "35px",
-              height: "35px",
-              display: "inline-block",
-              marginRight: "20px",
-              paddingRight: "0px",
-            }}
-          />{" "}
-          Crear un grupo nuevo
-        </div>
-        <div className="col-span-4 m-5">
-          <img
-            src="icons/Iconos-Muro-General/send-new-message.png"
-            style={{
-              width: "35px",
-              height: "35px",
-              display: "inline-block",
-              marginRight: "20px",
-              paddingRight: "0px",
-            }}
-          />{" "}
-          Enviar mensaje nuevo
+        <div style={{heigt: 'auto', paddingBottom: '10px', background: '#f4eeee'}}>
+          <div style={{ height: '400px', overflowY: 'auto' }}>
+            { lastUsers.map((contact) => (
+              <Link href={contact.slug || ''}>
+                <a>
+                  <div className="col-span-4 m-3" key={contact.id}>
+                    <img
+                      src={ contact.profilePhoto }
+                      style={{
+                        borderRadius: "50%",
+                        width: "45px",
+                        height: "45px",
+                        display: "inline-block",
+                        marginRight: "20px",
+                        paddingRight: "0px",
+                      }}
+                    />
+                    { contact.firstName + ' ' + contact.lastName }
+                  </div>
+                </a>
+              </Link> 
+            )) }
+          </div>
         </div>
       </div>
     </React.Fragment>
