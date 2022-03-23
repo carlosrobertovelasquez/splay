@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react"
 import NavBar from "../../molecules/Navbar"
 import Header from "../../molecules/Header/Profile"
 import Body from "../../molecules/Profile/Body"
-import Error404 from "../errors/404"
-import { listenLatesUsers, listenLatesUsersbyslug } from "../../../lib/db"
+
+import { listenLatesUsers } from "../../../lib/db"
 export default function index(props) {
   const { profile } = props
   const { userId } = props
@@ -27,10 +27,10 @@ export default function index(props) {
   if (datos === undefined) return null
   return (
     <>    
-    { (dataComentarios.length !== 0) && <NavBar datos={dataComentarios} profile={profile} /> }
-    { (dataComentarios.length !== 0) && <Header userId={dataComentarios} profile={profile} /> }
-    { (dataComentarios.length !== 0) && <Body userData={dataComentarios} profile={profile} /> }
-    { (dataComentarios.length === 0) && <Error404/> }
+      <NavBar datos={datos} profile={profile} /> 
+      <Header userId={datos} profile={profile} /> 
+      <Body userData={datos} profile={profile} /> 
+    
     </>
   )
 }

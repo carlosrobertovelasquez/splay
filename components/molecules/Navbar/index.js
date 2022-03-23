@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useRouter } from 'next/router'
-import iconBird from "../../../public/icons/bird.png"
+import iconBird from "../../../public/icons/bird2.png"
 import iconHome from "../../../public/icons/home.png"
 import icon1 from "../../../public/icons/icon1.png"
 import Logo from "../../../public/Logo02.png"
@@ -10,8 +10,7 @@ import Link from "next/link"
 import { useAuth } from "../../../lib/auth"
 import { searchAll } from '../../../lib/db'
 import styled from "styled-components"
-
-
+import ModalUpload from '../../organims/Modal/ModalNotificaciones'
 const Ul = styled.ul`
 position: absolute;
 z-index: 1000;
@@ -60,6 +59,8 @@ export default function index({ datos }) {
   const [isShow, setIsShow] = useState(false);
   const [input, setInput] = useState("");
   const [fueradeUl, setFueradeUl] = useState(true);
+  const [showModal, setShowModal] = useState(false)
+  const [resultado, setResultado] = useState(null)
   const router = useRouter();
 
   useEffect(() => {
@@ -173,6 +174,9 @@ export default function index({ datos }) {
       console.log();
     }
   }
+    const notificaciones=()=>{
+      setShowModal(!showModal)
+    }
 
   const onMouseEnter = (e, index) => {
     setActive(index);
@@ -222,7 +226,7 @@ export default function index({ datos }) {
     <>
       
       <nav
-        className="flex-row   md:flex justify-between bg-teal-500 py-3 w-screen "
+        className="flex-row  sticky top-0   md:flex justify-between bg-teal-500 py-3 w-screen "
         style={{ background: "#B2DFDD" }}
       >
         <div className="pl-1 md:hidden">
@@ -269,13 +273,14 @@ export default function index({ datos }) {
               </a>
             </Link>
           </div>
-          <div>
-            <a
-              href="#"
-              className="inline-block text-sm px-2 leading-none mt-4 lg:mt-0"
+          <div onClick={()=>notificaciones()}>
+            <span
+              
+              className="inline-block relative text-sm px-2 leading-none mt-4 lg:mt-0"
             >
-              <img style={{ width: "80px" }} src={iconBird} />
-            </a>
+              <img className="countImagen" src={iconBird} />
+              <span className="countNotificaciones" >{resultado}</span>
+            </span>
           </div>
           <div onClick={() => signout()}>
             <a
@@ -286,6 +291,12 @@ export default function index({ datos }) {
             </a>
           </div>
         </div>
+        <ModalUpload
+        show={showModal}
+        setShowModal={setShowModal}
+        datos={datos}
+        setResultado={setResultado}
+      />
       </nav>
     </>
   )

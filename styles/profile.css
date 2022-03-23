@@ -143,6 +143,50 @@
   object-position: center;
 }
 
+.containerNotificaciones{
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  border-radius: 0px 0px 30px 30px;
+  z-index:2;
+  top: 75px;
+  background: #B2DFDD;
+  
+ 
+
+}
+.encabezado{
+  
+  align-items: center;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 12px;
+}
+.contenedor-item{
+  background: #B2DFDD;
+  pointer-events:all;
+ 
+}
+.contenedor-item:hover{
+  background: #d5eceb !important;
+  cursor: pointer;
+ 
+}
+.countImagen{
+  height: 50px;
+  cursor: pointer;
+}
+.countNotificaciones{
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: 55%;
+  left: 27%;
+  transform: translate(-50%,-50%);
+ 
+
+}
 @media only screen and (max-width: 1024px) {
   .coverImage {
     height: 150px;
