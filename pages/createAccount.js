@@ -2,11 +2,12 @@ import React, { useState } from "react"
 // import Head from "next/head"
 
 // import { useAuth } from "../lib/auth"
-import { doesUsernameExist } from "../lib/db"
+import { doesUsernameExist, createSlugUser } from "../lib/db";
 import Link from "next/link"
 import Quetzal2 from "../public/Quetzal.jpeg"
 import firebase from "../lib/firebase"
 import { Router, useRouter } from "next/router"
+
 export default function createAccount() {
   //  const { user, signout } = useAuth()
   const [email, setEmail] = useState("")
@@ -68,6 +69,8 @@ export default function createAccount() {
               "https://firebasestorage.googleapis.com/v0/b/splay7-8f0b9.appspot.com/o/Avatar%2Fbcac4514-387c-48d4-afa4-23cc459244a2.jpeg?alt=media&token=634a3d34-79fb-419f-85d1-df17d0ddd9cb",
             profilePhoto:
               "https://firebasestorage.googleapis.com/v0/b/splay7-8f0b9.appspot.com/o/Portada%2Fcd791fbf-cd54-402b-8d35-022b4c3091fc.png?alt=media&token=a97a1823-fb26-4e35-89c6-b17b8eb2acc8",
+            referido: '',
+            slug: createSlugUser(nombre, apellido),
             trabajaEn: "ND",
             estadoCivil: "ND",
             occupation: "ND",
