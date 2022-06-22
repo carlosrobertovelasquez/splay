@@ -1,4 +1,4 @@
-import { StyledComponent } from "styled-components";
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -14,7 +14,7 @@ export default function Error404() {
                             fontSize: "1rem",
                             fontWeight: "bold",
                             color: "#00A59B",
-                          }}>Ir Atrás</button>
+                          }}>Ir Atrás lo siento</button>
 
         </div>
     );
