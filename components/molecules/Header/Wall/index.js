@@ -60,15 +60,15 @@ export default function index({ datos, profile }) {
                     >
                       {datos[0].occupation}
                     </h2>
-                    <div>
+                    {/*<div>
                       <input
                         disabled={true}
                         style={{ width: "100%", fontSize: "10px" }}
                         value={`https://splay7.com/createAccount/?ref=${datos[0].userid}`}
                       ></input>
-                    </div>
+                    </div>*/}
 
-                    <p className="my-4">
+                    {/*<p className="my-4">
                       <button
                         className="bg-gray-splay2 hover:bg-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
                         onClick={() =>
@@ -94,6 +94,7 @@ export default function index({ datos, profile }) {
                         <span>Copy Link Referidos</span>
                       </button>
                     </p>
+                    */}
                   </div>
                 </div>
               </div>
