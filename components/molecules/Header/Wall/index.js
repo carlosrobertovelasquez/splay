@@ -71,11 +71,13 @@ export default function index({ datos, profile }) {
                     <p className="my-4">
                       <button
                         className="bg-gray-splay2 hover:bg-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
-                        onClick={() =>
-                          navigator.clipboard.writeText(
-                            `https://splay7.com/?ref=${datos[0].userid}`
+                        onClick={() =>{
+                         window.open("https://Splay7marketing.com","_blank"
+                          /* navigator.clipboard.writeText( */
+                            /* `https://splay7.com/?ref=${datos[0].userid}` */
+                            
                           )
-                        }
+                        }}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +93,7 @@ export default function index({ datos, profile }) {
                             d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                           />
                         </svg>
-                        <span>Copy Link Referidos</span>
+                        <span>Ir a Splay7marketing.com</span>
                       </button>
                     </p>
                   </div>
