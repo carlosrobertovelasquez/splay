@@ -232,15 +232,15 @@ export default function index({ datos }) {
         <div className="pl-1 md:hidden">
           <BurgerMenu datos={datos} />
         </div>
-        <div className="flex justify-evenly" style={{ flexWrap: 'wrap' }}>
+        <div className="flex justify-evenly">
           <div>
-            <Link href="/"><a><img className="fill-current ml-8" width="100" src={Logo}/></a></Link>
+            <img className="fill-current ml-8" width="100" src={Logo}></img>
           </div>
 
-          <div className="pl-1 divbuscador">
+          <div className="pl-1">
             <input
               type="text"
-              className="px-2 w-40 h-10 md:w-96 buscador"
+              className="px-2 w-40 h-10 md:w-96 "
               style={{
                 borderRadius: "7px",
                 background: "#d5eceb",
