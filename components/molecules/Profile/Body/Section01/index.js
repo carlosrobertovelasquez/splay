@@ -2,11 +2,18 @@ import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone"
 import ModalUpload from "../../../../organims/Modal/ModalPublication"
 export default function index(props) {
+  const [showModal, setShowModal] = useState(false)
+    const Modal = () => {
+      setShowModal(true)
+    }
   const { userData } = props
-
+   
   if (userData[0].length === 0 || userData[0] === undefined) return null
   const Nombre =
     userData[0].firstName === null ? null : userData[0].firstName.split(" ")
+    
+    const id=userData[0].userid
+    
 
   const handleUploadAvatar = async (file) => {
     const extension = file.name.split(".").pop()
@@ -36,6 +43,7 @@ export default function index(props) {
         setFileUpload(null)
       }
     )
+    
   }
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -71,7 +79,7 @@ export default function index(props) {
             />
           </p>
         </div>
-        <div className="text-center  " onClick={handleUploadAvatar} {...getRootProps()}>
+        <div className="text-center  " onClick={Modal}>
           <p
             style={{
               marginBottom: "2rem",
@@ -89,7 +97,6 @@ export default function index(props) {
               ¿Que está pensando, {Nombre[0]} ?
             </span>
           </p>
-          <input {...getInputProps()} />
         </div>
         <div className="flex ">
           <div className="text-center">
@@ -131,6 +138,11 @@ export default function index(props) {
           </div>
         </div>
       </div>
+      <ModalUpload
+        show={showModal}
+        setShowModal={setShowModal}
+        userData={id}
+      />
     </>
   )
 }
